@@ -1,0 +1,12 @@
+--ENTRAR NA PASTA BACKEND--
+cd .\backend\
+
+--INICIALIZAR O SERVER--
+npm init -y
+
+--INSTALAR DEPENDÊNCIAS--
+npm install express
+npm install cors
+
+--RODAR SERVIDOR--
+node --watch .\server\
