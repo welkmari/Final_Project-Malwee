@@ -1,11 +1,15 @@
 // Importa o express e o cors
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); // Você mencionou o cors, é bom tê-lo aqui
 const mysql = require('mysql2/promise');
 require('dotenv').config()
 
 // Cria o servidor
 const app = express(); 
+
+// Configura o CORS (se necessário para o frontend em outro domínio/porta)
+app.use(cors());
+app.use(express.json())
 
 //Pega os dados do .env
 const DB_HOST = process.env.DB_HOST;
@@ -25,10 +29,11 @@ const pool = mysql.createPool({
     connectionLimit: 10
 });
 
+// Rota de teste (já existente)
 app.get('/', async (req, res) => {
-    //O try faz uma promessa que se conseguir acessar o db ele ira apresentar os dados do arquivo csv 
+    // ... código existente que testa a conexão e retorna todos os dados
     try {
-        const [rows] = await pool.query('SELECT * FROM data');
+        const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); // Limitei para não sobrecarregar
         
         res.status(200).json({ 
             message: 'Conexão com Node.js e DB OK!',
@@ -36,7 +41,6 @@ app.get('/', async (req, res) => {
             data: rows,
             db_host: DB_HOST 
         });
-    //Caso o try de errado, vai cair no catch que vai mostrar uma mensagem apontando os possiveis erros
     } catch (erro) {
         console.error('ERRO ao acessar o DB:', erro.message);
         res.status(500).json({ 
@@ -46,6 +50,40 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.listen(APP_PORT, '0.0.0.0',  () => {
-    console.log(`http://localhost:${APP_PORT}`)
+// 🌟 NOVA ROTA PARA O CHART.JS 🌟
+app.get('/api/chart-data', async (req, res) => {
+    try {
+        // SQL: Calcula a média de Metros Produzidos (AVG) agrupado por Máquina
+        const sqlQuery = `
+            SELECT 
+                Maquina, 
+                AVG(\`Metros Produzidos\`) AS media_metros
+            FROM 
+                data
+            GROUP BY 
+                Maquina
+            ORDER BY 
+                Maquina;
+        `;
+        
+        const [results] = await pool.query(sqlQuery);
+        
+        // Formata os dados no padrão do Chart.js
+        const labels = results.map(row => `Máquina ${row.Maquina}`);
+        const data = results.map(row => parserow.media_metros.toFixed(2)); // Arredonda para 2 casas decimais
+
+        // Retorna o JSON formatado
+        res.json({ labels, data });
+
+    } catch (erro) {
+        console.error('ERRO ao buscar dados para o gráfico:', erro.message);
+        res.status(500).json({ 
+            error: 'Erro ao buscar dados do gráfico.',
+            details: erro.code 
+        });
+    }
+});
+
+app.listen(APP_PORT, '0.0.0.0',  () => {
+    console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
 })

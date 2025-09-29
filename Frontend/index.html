@@ -6,28 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dados e Demandas </title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="sidebar">
-      <img class="malweeIMG" src="img/image-removebg-preview.png" alt="Icone Malwee">
-    
-      <a href="index.html"><i class="ri-home-4-line"></i></a>
-      <a href="dashboard.html"><i class="ri-dashboard-line"></i></a>
-      <a href="produtos.html"><i class="ri-box-3-line"></i></a>
-      <a href="relatorios.html"><i class="ri-bar-chart-line"></i></a>
-      <a href="Login/login.html"><i class="ri-user-line"></i></a>
-      <a href="configuracoes.html"><i class="ri-settings-3-line"></i></a>
-      <a href="logout.html"><span class="material-symbols-outlined">logout</span></a>
-    
-      <button id="theme-toggle" class="theme-btn">
-        <i class="ri-sun-line"></i>
-      </button>
-    </div>
-    
-  
+    <img class="malweeIMG" src="img/image-removebg-preview.png" alt="Icone Malwee">
+
+    <a href="index.html"><i class="ri-home-4-line"></i></a>
+    <a href="dashboard.html"><i class="ri-dashboard-line"></i></a>
+    <a href="produtos.html"><i class="ri-box-3-line"></i></a>
+    <a href="relatorios.html"><i class="ri-bar-chart-line"></i></a>
+    <a href="Login/login.html"><i class="ri-user-line"></i></a>
+    <a href="configuracoes.html"><i class="ri-settings-3-line"></i></a>
+    <a href="logout.html"><span class="material-symbols-outlined">logout</span></a>
+
+    <button id="theme-toggle" class="theme-btn">
+      <i class="ri-sun-line"></i>
+    </button>
+  </div>
+
+
 
   <div class="main">
     <div class="header">
@@ -51,7 +52,7 @@
         </div>
       </div>
       <div class="card-topo">
-        <img class = "img-malwee" src="/Frontend/img/image-removebg-preview.png" alt="">
+        <img class="img-malwee" src="/Frontend/img/image-removebg-preview.png" alt="">
       </div>
     </div>
 
@@ -61,20 +62,25 @@
       </div>
       <div class="block">
         <h3>Eficiência da máquina (%)</h3>
+        <canvas id="meuGrafico" width="400" height="200"></canvas>
       </div>
-      <div class="block">
-        <h3>Gasto de material (real x previsto)</h3>
-      </div>
-      <div class="block">
-        <h3>Atingimento de Meta</h3>
-      </div>
-      <div class="block">
-        <h3>Localidades (UF e Região)</h3>
+      <div class="dashboard2">
+        <div class="block">
+          <h3>Gasto de material (real x previsto)</h3>
+        </div>
+        <div class="block">
+          <h3>Atingimento de Meta</h3>
+        </div>
+        <div class="block">
+          <h3>Localidades (UF e Região)</h3>
+        </div>
       </div>
     </div>
   </div>
 
- 
-  <script src="/Frontend/theme.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="chart.js"></script>
 </body>
+
 </html>

@@ -100,6 +100,15 @@ body {
     align-items: center;
 }
 
+.cards-top2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-left: 0vh;
+}
+
+
 .img-malwee {
     margin-left: 80px;
     max-width: 30px;
@@ -123,6 +132,13 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px;
+}
+
+.dashboard2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .block {
