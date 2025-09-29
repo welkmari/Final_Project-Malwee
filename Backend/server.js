@@ -70,7 +70,7 @@ app.get('/api/chart-data', async (req, res) => {
         
         // Formata os dados no padrão do Chart.js
         const labels = results.map(row => `Máquina ${row.Maquina}`);
-        const data = results.map(row => parserow.media_metros.toFixed(2)); // Arredonda para 2 casas decimais
+        const data = results.map(row => parseFloat(row.media_metros).toFixed(2)); // Arredonda para 2 casas decimais
 
         // Retorna o JSON formatado
         res.json({ labels, data });
