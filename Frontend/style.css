@@ -176,3 +176,13 @@ body {
         'GRAD' 0,
         'opsz' 24
 }
+
+.light-theme {
+    --bg-dark: #f5f5f5;
+    --sidebar: #e0e0e0;
+    --card: #ffffff;
+    --text: #111;
+    --accent1: #0ea5e9;
+    --accent2: #9333ea;
+    --accent3: #06b6d4;
+}
