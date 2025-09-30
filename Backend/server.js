@@ -57,7 +57,7 @@ app.get('/api/chart-data', async (req, res) => {
         const sqlQuery = `
             SELECT 
                 Maquina, 
-                AVG(\`Metros Produzidos\`) AS media_metros // <-- AGORA ESTÁ CORRETO
+                AVG(\`Metros Produzidos\`) AS media_metros 
             FROM 
                 data
             GROUP BY 
