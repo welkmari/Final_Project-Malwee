@@ -3,7 +3,7 @@ fetch('http://localhost:3000/api/chart-data')
     .then(response => {
         // Verifica se a resposta foi bem-sucedida (status 200-299)
         if (!response.ok) {
-    throw new Error(`Erro HTTP! Status: ${response.status}`);
+            throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
         // Converte a resposta para JSON
         return response.json();
