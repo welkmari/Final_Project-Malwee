@@ -57,7 +57,7 @@ app.get('/api/chart-data', async (req, res) => {
         const sqlQuery = `
             SELECT 
                 Maquina, 
-                AVG(\`Metros Produzidos\`) AS media_metros
+                AVG(\Metros Produzidos\) AS media_metros
             FROM 
                 data
             GROUP BY 
@@ -84,6 +84,6 @@ app.get('/api/chart-data', async (req, res) => {
     }
 });
 
-app.listen(APP_PORT, '0.0.0.0',  () => {
+app.listen(APP_PORT, '0.0.0.0',  () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
 })
