@@ -60,31 +60,27 @@ body {
     color: var(--accent2);
 }
 
-/* ícones */
-.sidebar i, 
+.sidebar i,
 .sidebar .material-symbols-outlined {
     font-size: 22px;
 }
 
-/* textos ocultos inicialmente */
 .sidebar span.text {
     font-size: 15px;
     opacity: 0;
     transition: opacity 0.2s;
 }
 
-/* quando expandir no hover → mostra os textos */
 .sidebar:hover span.text {
     opacity: 1;
 }
 
-/* conteúdo se ajusta */
 .main {
     margin-left: 80px;
     transition: margin-left 0.3s ease;
 }
 
-.sidebar:hover ~ .main {
+.sidebar:hover~.main {
     margin-left: 250px;
 }
 
@@ -105,8 +101,8 @@ body {
 }
 
 #logout-theme {
-    margin-top: 35vh;
-}
+    margin-top: auto; 
+  }
 
 #theme-toggle {
     margin-top: 0vh;
@@ -207,7 +203,9 @@ body {
     background: var(--card);
     padding: 15px;
     border-radius: 10px;
-    min-height: 150px;
+    height: 350px; 
+    max-height: 450px;
+    overflow: hidden;
 }
 
 
@@ -247,6 +245,7 @@ body {
     justify-content: center;
     transition: background 0.3s, transform 0.2s;
     margin-top: 12px;
+    margin-left: 7px;
 }
 
 .theme-btn:hover {
@@ -261,9 +260,6 @@ body {
         'GRAD' 0,
         'opsz' 24
 }
-
-
-
 
 .search-bar-top {
     display: flex;
@@ -292,7 +288,6 @@ body {
 .search-bar-top button {
     height: 40px;
     background-color: var(--sidebar);
-    /* ou crie uma --button-bg se quiser */
     border: none;
     padding: 0 12px;
     border-radius: 8px;
@@ -306,5 +301,4 @@ body {
 
 .search-bar-top button:hover {
     background-color: #cfcfcf;
-    /* ou crie uma --button-hover */
 }

@@ -128,13 +128,13 @@ app.get('/api/chart-producao-tempo', async (req, res) => {
     try {
         const query = `
             SELECT 
-                DATE_FORMAT(Data, '%Y-%m-%d %H:00:00') as hora, 
-                /* ALTERAÇÃO AQUI: Trocamos o campo a ser somado */
+                DATE_FORMAT(\`Data (AAAA-MM-DD HH:MM:SS)\`, '%Y-%m-%d %H:00:00') as hora,
                 SUM(\`Tempo de Produção\`) as total_por_hora
             FROM data 
             GROUP BY hora
             ORDER BY hora;
-        `;
+        `; 
+        
         const [results] = await pool.query(query);
 
         const labels = results.map(item => 
