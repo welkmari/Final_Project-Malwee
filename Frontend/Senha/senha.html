@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redefina sua Senha</title>
+    <title>Esqueceu sua senha?</title>
+    <link rel="stylesheet" href="/Frontend/Login/login.css">
 </head>
+
 <body>
-    
+    <div class="login-container">
+        <h1>Esqueceu sua Senha?</h1>
+        <p>Bem-vindos</p>
+        <form action="index.html" method="GET">
+            <div class="form-group">
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Coloque o seu usuário" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Nova senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Coloque a sua senha" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Repita a senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Coloque a sua senha" required>
+            </div>
+           
+            <button type="submit" class="login-Button">Cadastar</button>
+        </form>
+        <div class="registrar">
+            Criar nova conta? <a href="/Frontend/Registro/registro.html">Registre-se aqui!</a>
+        </div>
+    </div>
 </body>
+
 </html>
