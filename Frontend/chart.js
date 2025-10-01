@@ -18,10 +18,10 @@ fetch('http://localhost:3000/api/chart-data')
                 labels: json.labels,
                 datasets: [{
                     label: 'Média de Metros Produzidos',
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    backgroundColor: '#A178F1',
 
                     data: json.data,
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderColor: '#A178F1',
                     borderWidth: 1
                 }]
             },
@@ -193,8 +193,8 @@ fetch('http://localhost:3000/api/chart-localidades')
                     label: 'Produção Total (m)',
                     data: json.data,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.7)',
-                        'rgba(54, 162, 235, 0.7)',
+                        '#A178F1',
+                        '#4EE2B5',
                         'rgba(255, 206, 86, 0.7)',
                         'rgba(75, 192, 192, 0.7)',
                         'rgba(153, 102, 255, 0.7)',

@@ -84,12 +84,11 @@ app.get('/api/chart-data', async (req, res) => {
     }
 });
 
-// Endpoint para o gráfico de Atingimento de Meta
 app.get('/api/chart-meta', async (req, res) => {
     try {
         const query = `
             SELECT 
-                CASE WHEN \`Tarefa completa?\` = 1 THEN 'Completa' ELSE 'Incompleta' END as status, 
+                CASE WHEN \`Tarefa completa?\` = 1 THEN 'Completo' ELSE 'Incompleto' END as status,
                 COUNT(*) as total 
             FROM data 
             GROUP BY \`Tarefa completa?\`;
@@ -103,6 +102,7 @@ app.get('/api/chart-meta', async (req, res) => {
         res.status(500).json({ error: 'Erro ao buscar dados do gráfico de metas.', details: erro.code });
     }
 });
+
 // Endpoint para o gráfico de Produção por Tipo de Tecido
 app.get('/api/chart-producao-tecido', async (req, res) => {
     try {
