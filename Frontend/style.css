@@ -30,8 +30,12 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
-    gap: 25px;
+    gap: 35px;
 }
+
+.sidebar a {
+    text-decoration: none;
+  }
 
 .sidebar i {
     font-size: 22px;
@@ -42,6 +46,14 @@ body {
 
 .sidebar i:hover {
     color: var(--accent2);
+}
+
+#logout-theme{
+    margin-top: 35vh;
+}
+
+#theme-toggle{
+    margin-top: 0vh;
 }
 
 .malweeIMG {
@@ -58,6 +70,12 @@ body {
     font-size: 22px;
     font-weight: bold;
 }
+
+.header .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
 .header p {
     font-size: 14px;
@@ -186,3 +204,51 @@ body {
     --accent2: #9333ea;
     --accent3: #06b6d4;
 }
+
+.search-bar-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 20px 20px 20px;
+  }
+  
+  .search-bar-top input {
+    height: 40px; 
+    padding: 0 15px; 
+    border-radius: 8px;
+    border: none;
+    background-color: #1f1f1f;
+    color: #fff;
+    width: 250px;
+    box-sizing: border-box;
+  }
+  
+
+  .search-bar-top input[type="text"] {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .search-bar-top input::placeholder {
+    color: #aaa;
+  }
+  
+  .search-bar-top button {
+    height: 40px; 
+    background-color: #4a4a4a;
+    border: none;
+    padding: 0 12px; 
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-bar-top button:hover {
+    background-color: #5a5a5a;
+  }
+  
