@@ -76,12 +76,12 @@ fetch('http://localhost:3000/api/chart-meta')
                     label: 'Status da Tarefa',
                     data: json.data,
                     backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)', // Cor para "Completa"
-                        'rgba(255, 99, 132, 0.6)'  // Cor para "Incompleta"
+                        'rgba(255, 99, 132, 0.6)', // Cor para "Imcompleta "
+                        'rgba(75, 192, 192, 0.6)'  // Cor para "Completa"
                     ],
                     borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)'
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)'
                     ],
                     borderWidth: 1
                 }]

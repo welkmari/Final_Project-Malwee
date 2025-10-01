@@ -1,13 +1,11 @@
-// Importa o express e o cors
+
 const express = require('express');
-const cors = require('cors'); // Você mencionou o cors, é bom tê-lo aqui
+const cors = require('cors');
 const mysql = require('mysql2/promise');
 require('dotenv').config()
 
-// Cria o servidor
 const app = express();
 
-// Configura o CORS (se necessário para o frontend em outro domínio/porta)
 app.use(cors());
 app.use(express.json())
 
@@ -34,7 +32,7 @@ app.get('/', async (req, res) => {
     // ... código existente que testa a conexão e retorna todos os dados
     try {
         const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); // Limitei para não sobrecarregar
-        
+
         res.status(200).json({
             message: 'Conexão com Node.js e DB OK!',
             total_records: rows.length,
@@ -65,9 +63,9 @@ app.get('/api/chart-data', async (req, res) => {
             ORDER BY 
                 Maquina;
         `;
-        
+
         const [results] = await pool.query(sqlQuery);
-        
+
         // Formata os dados no padrão do Chart.js
         const labels = results.map(row => `Máquina ${row.Maquina}`);
         const data = results.map(row => parseFloat(row.media_metros).toFixed(2)); // Arredonda para 2 casas decimais
@@ -84,25 +82,59 @@ app.get('/api/chart-data', async (req, res) => {
     }
 });
 
+// Endpoint alternativo para debug
 app.get('/api/chart-meta', async (req, res) => {
     try {
+        // Primeiro, vamos verificar os valores únicos no banco
+        const debugQuery = `SELECT DISTINCT \`Tarefa completa?\` FROM data`;
+        const [debugResults] = await pool.query(debugQuery);
+        console.log('Valores únicos de "Tarefa completa?":', debugResults);
+
+        // Query principal com mapeamento manual
         const query = `
             SELECT 
-                CASE WHEN \`Tarefa completa?\` = 1 THEN 'Completo' ELSE 'Incompleto' END as status,
+                \`Tarefa completa?\` as valor_original,
                 COUNT(*) as total 
             FROM data 
-            GROUP BY \`Tarefa completa?\`;
+            GROUP BY \`Tarefa completa?\`
+            ORDER BY \`Tarefa completa?\`;
         `;
         const [results] = await pool.query(query);
-        const labels = results.map(item => item.status);
-        const data = results.map(item => item.total);
+        
+        console.log('Resultados brutos:', results);
+        
+        // Mapeamento manual para garantir os labels corretos
+        const labelMap = {
+            '0': 'Incompleta',
+            '1': 'Completa',
+            'TRUE': 'Completa',
+            'FALSE': 'Incompleta'
+        };
+        
+        const labels = [];
+        const data = [];
+        
+        results.forEach(item => {
+            const valor = item.valor_original?.toString();
+            const label = labelMap[valor] || 'Indefinida';
+            labels.push(label);
+            data.push(item.total);
+        });
+        
+        console.log('Labels finais:', labels);
+        console.log('Data final:', data);
+        
         res.json({ labels, data });
+        
     } catch (erro) {
         console.error('ERRO ao buscar dados para o gráfico de metas:', erro.message);
-        res.status(500).json({ error: 'Erro ao buscar dados do gráfico de metas.', details: erro.code });
+        res.status(500).json({ 
+            error: 'Erro ao buscar dados do gráfico de metas.'
+        });
     }
 });
 
+    
 // Endpoint para o gráfico de Produção por Tipo de Tecido
 app.get('/api/chart-producao-tecido', async (req, res) => {
     try {
@@ -132,17 +164,17 @@ app.get('/api/chart-producao-tempo', async (req, res) => {
             FROM data 
             GROUP BY hora
             ORDER BY hora;
-        `; 
-        
+        `;
+
         const [results] = await pool.query(query);
 
-        const labels = results.map(item => 
+        const labels = results.map(item =>
             new Date(item.hora).toLocaleTimeString('pt-BR', {
-                hour: '2-digit', 
-                minute: '2-digit' 
+                hour: '2-digit',
+                minute: '2-digit'
             })
         );
-        
+
         const data = results.map(item => item.total_por_hora);
 
         res.json({ labels, data });
@@ -167,7 +199,7 @@ app.get('/api/chart-localidades', async (req, res) => {
         // Formata os dados para o Chart.js
         const labels = results.map(item => `Localidade ${item.Maquina}`);
         const data = results.map(item => item.total_produzido);
-        
+
         res.json({ labels, data });
 
     } catch (erro) {
@@ -176,6 +208,6 @@ app.get('/api/chart-localidades', async (req, res) => {
     }
 });
 
-app.listen(APP_PORT, '0.0.0.0',  () => {
+app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
 })

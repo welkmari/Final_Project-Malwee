@@ -2,38 +2,164 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dados e Demandas</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados e Demandas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="sidebar">
-    <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
-  
-    <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
-    <a href="dashboard.html"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
-    <a href="Dashboard/dashboard.html"><i class="ri-box-3-line"></i><span class="text">Produções</span></a>
-    <a href="Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
-    <a href="Login/login.html"><i class="ri-user-line"></i><span class="text">Login</span></a>
-    <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
+    <div class="sidebar">
+        <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
 
-    <div id="logout-theme">
-      <a href="/Frontend/Logout/logout.html"><span class="material-symbols-outlined" style="margin-bottom: 15px; margin-left: 7.2px;">logout</span><span class="text" style="margin-bottom: 15px;">Sair</span></a>
-      <button id="theme-toggle" class="theme-btn">
-        <i class="ri-sun-line"></i><span class="text"></span>
-      </button>
+        <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
+        <a href="dashboard.html"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
+        <a href="Dashboard/dashboard.html"><i class="ri-box-3-line"></i><span class="text">Produções</span></a>
+        <a href="Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
+        <a href="Login/login.html"><i class="ri-user-line"></i><span class="text">Login</span></a>
+        <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
+
+        <div id="logout-theme">
+            <a href="/Frontend/Logout/logout.html"><span class="material-symbols-outlined">logout</span><span
+                    class="text">Sair</span></a>
+            <button id="theme-toggle" class="theme-btn">
+                <i class="ri-sun-line"></i>
+            </button>
+        </div>
     </div>
-  </div>
-<script src="tema.js"></script>
+
+    <main class="main">
+        <header class="header">
+            <h1>Relatórios</h1>
+            <p class="breadcrumbs">Relatórios / Relatórios</p>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="ri-filter-3-line"></i> Filtros de pesquisa</h2>
+            </div>
+            <div class="card-body">
+                <div class="filter-grid">
+                    <div class="form-group">
+                        <label for="visitante">Visitante</label>
+                        <input type="text" id="visitante" value="Aldenor Lemos Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-inicial">Data Inicial</label>
+                        <input type="date" id="data-inicial" value="2023-04-14">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-final">Data Final</label>
+                        <input type="date" id="data-final" value="2023-04-14">
+                    </div>
+                    <div class="form-group">
+                        <label for="unidade">Unidade</label>
+                        <select id="unidade">
+                            <option>Todas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ocorrencia">Tipo de Ocorrência</label>
+                        <select id="ocorrencia">
+                            <option>Ambas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exibicao">Modo de Exibição</label>
+                        <select id="exibicao">
+                            <option>Sintético</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button class="btn btn-secondary"><i class="ri-delete-bin-line"></i> Limpar</button>
+                    <button class="btn btn-primary"><i class="ri-search-line"></i> Buscar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Resultado da pesquisa</h2>
+            </div>
+            <div class="card-body">
+                <div class="results-actions">
+                    <div class="action-buttons">
+                        <button class="btn">Copiar</button>
+                        <button class="btn">Excel</button>
+                        <button class="btn">CSV</button>
+                        <button class="btn">PDF</button>
+                        <button class="btn dropdown">Exibindo colunas <i class="ri-arrow-down-s-line"></i></button>
+                        <button class="btn dropdown">Agrupar <i class="ri-arrow-down-s-line"></i></button>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" placeholder="Pesquisar">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome Completo <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Responsável Cadastro <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Documentos <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Data <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Nome Usuário Registro Entrada <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Horário de Entrada <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Nome Usuário Registro Saída <i class="ri-arrow-up-down-line"></i></th>
+                                <th>Horário de Saída <i class="ri-arrow-up-down-line"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aldenor Lemos Silva</td>
+                                <td>TARCISIO PEREIRA DOS SANTOS JUNIOR</td>
+                                <td>OAB:</td>
+                                <td>14/04/2023</td>
+                                <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
+                                <td>14/04/2023 10:15:57</td>
+                                <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
+                                <td>14/04/2023 10:16:42</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-container">
+                    <div class="results-per-page">
+                        <select>
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                        </select>
+                        <span>resultados por página</span>
+                    </div>
+                    <div class="record-info">
+                        Mostrando de 1 até 1 de 1 registros
+                    </div>
+                    <div class="pagination-controls">
+                        <button disabled>Anterior</button>
+                        <button class="active">1</button>
+                        <button>Próxima</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="main-footer">
+            <span>© 2023 - Tribunal de Justiça do Estado do Ceará - Todos os Direitos Reservados</span>
+            <span>Tempo Sessão: 07:15:33</span>
+        </footer>
+    </main>
+
+    <script src="tema.js"></script>
 </body>
+
 </html>

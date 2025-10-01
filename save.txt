@@ -7,6 +7,8 @@ npm init -y
 --INSTALAR DEPENDÊNCIAS--
 npm install express
 npm install cors
+npm install mysql2
+npm install dotenv
 
 --RODAR SERVIDOR--
 node --watch .\server\
