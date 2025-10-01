@@ -5,7 +5,7 @@ const mysql = require('mysql2/promise');
 require('dotenv').config()
 
 // Cria o servidor
-const app = express(); 
+const app = express();
 
 // Configura o CORS (se necessário para o frontend em outro domínio/porta)
 app.use(cors());
@@ -35,22 +35,22 @@ app.get('/', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); // Limitei para não sobrecarregar
         
-        res.status(200).json({ 
+        res.status(200).json({
             message: 'Conexão com Node.js e DB OK!',
             total_records: rows.length,
             data: rows,
-            db_host: DB_HOST 
+            db_host: DB_HOST
         });
     } catch (erro) {
         console.error('ERRO ao acessar o DB:', erro.message);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Erro de conexão com o banco de dados. Verifique credenciais e se o MySQL está rodando.',
-            details: erro.code 
+            details: erro.code
         });
     }
 });
 
-// 🌟 NOVA ROTA PARA O CHART.JS 🌟
+// Rota original para o primeiro gráfico (já existente)
 app.get('/api/chart-data', async (req, res) => {
     try {
         // SQL: Calcula a média de Metros Produzidos (AVG) agrupado por Máquina
@@ -77,10 +77,103 @@ app.get('/api/chart-data', async (req, res) => {
 
     } catch (erro) {
         console.error('ERRO ao buscar dados para o gráfico:', erro.message);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Erro ao buscar dados do gráfico.',
-            details: erro.code 
+            details: erro.code
         });
+    }
+});
+
+// Endpoint para o gráfico de Atingimento de Meta
+app.get('/api/chart-meta', async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                CASE WHEN \`Tarefa completa?\` = 1 THEN 'Completa' ELSE 'Incompleta' END as status, 
+                COUNT(*) as total 
+            FROM data 
+            GROUP BY \`Tarefa completa?\`;
+        `;
+        const [results] = await pool.query(query);
+        const labels = results.map(item => item.status);
+        const data = results.map(item => item.total);
+        res.json({ labels, data });
+    } catch (erro) {
+        console.error('ERRO ao buscar dados para o gráfico de metas:', erro.message);
+        res.status(500).json({ error: 'Erro ao buscar dados do gráfico de metas.', details: erro.code });
+    }
+});
+
+// Endpoint para o gráfico de Produção por Tipo de Tecido
+app.get('/api/chart-producao-tecido', async (req, res) => {
+    try {
+        const query = `
+            SELECT \`Tipo Tecido\`, SUM(\`Metros Produzidos\`) as total_produzido 
+            FROM data 
+            GROUP BY \`Tipo Tecido\`;
+        `;
+        const [results] = await pool.query(query);
+        const labels = results.map(item => `Tecido Tipo ${item['Tipo Tecido']}`);
+        const data = results.map(item => item.total_produzido);
+        res.json({ labels, data });
+    } catch (erro) {
+        console.error('ERRO ao buscar dados de produção por tecido:', erro.message);
+        res.status(500).json({ error: 'Erro ao buscar dados de produção por tecido.', details: erro.code });
+    }
+});
+
+
+// Endpoint para o gráfico de Produção ao Longo do Tempo
+app.get('/api/chart-producao-tempo', async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                DATE_FORMAT(Data, '%Y-%m-%d %H:00:00') as hora, 
+                /* ALTERAÇÃO AQUI: Trocamos o campo a ser somado */
+                SUM(\`Tempo de Produção\`) as total_por_hora
+            FROM data 
+            GROUP BY hora
+            ORDER BY hora;
+        `;
+        const [results] = await pool.query(query);
+
+        const labels = results.map(item => 
+            new Date(item.hora).toLocaleTimeString('pt-BR', {
+                hour: '2-digit', 
+                minute: '2-digit' 
+            })
+        );
+        
+        const data = results.map(item => item.total_por_hora);
+
+        res.json({ labels, data });
+
+    } catch (erro) {
+        console.error('ERRO ao buscar dados de produção ao longo do tempo:', erro.message);
+        res.status(500).json({ error: 'Erro ao buscar dados de produção ao longo do tempo.', details: erro.code });
+    }
+});
+app.get('/api/chart-localidades', async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                Maquina, 
+                SUM(\`Metros Produzidos\`) as total_produzido
+            FROM data
+            GROUP BY Maquina
+            ORDER BY Maquina;
+        `;
+        const [results] = await pool.query(query);
+
+        // Formata os dados para o Chart.js
+        const labels = results.map(item => `Localidade ${item.Maquina}`);
+        const data = results.map(item => item.total_produzido);
+        
+        res.json({ labels, data });
+
+    } catch (erro) {
+        console.error('ERRO ao buscar dados de produção por localidade:', erro.message);
+        res.status(500).json({ error: 'Erro ao buscar dados de produção por localidade.', details: erro.code });
     }
 });
 
