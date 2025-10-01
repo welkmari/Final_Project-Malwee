@@ -10,20 +10,17 @@ fetch('http://localhost:3000/api/chart-data')
     .then(json => {
         // Os dados dinâmicos estão em 'json.labels' e 'json.data'
         const ctx = document.getElementById('meuGrafico').getContext('2d');
-        
+
         // Inicializa o Chart.js usando os dados do JSON
         const meuGrafico = new Chart(ctx, {
-            type: 'bar', // tipo de gráfico: bar, line, pie, doughnut, radar...
+            type: 'bar',
             data: {
-                // USA OS DADOS DINÂMICOS
-                labels: json.labels, // <--- Aqui entram as Máquinas
+                labels: json.labels,
                 datasets: [{
-                    // Define o label e cores
-                    label: 'Média de Metros Produzidos', // <--- Ajustado para a nova métrica
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // Cor padrão para todas as barras
-                    
-                    // USA OS DADOS DINÂMICOS
-                    data: json.data, // <--- Aqui entram as médias de metros
+                    label: 'Média de Metros Produzidos',
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+
+                    data: json.data,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }]
@@ -36,7 +33,7 @@ fetch('http://localhost:3000/api/chart-data')
                     },
                     title: {
                         display: true,
-                        text: 'Média de Metros Produzidos por Máquina' 
+                        text: 'Média de Metros Produzidos por Máquina'
                     }
                 },
                 scales: {
@@ -109,27 +106,29 @@ fetch('http://localhost:3000/api/chart-producao-tempo')
     })
     .then(json => {
         const ctx = document.getElementById('graficoProducaoTempo').getContext('2d');
-        
+
         if (!ctx) {
             console.error('Elemento canvas com id "graficoProducaoTempo" não foi encontrado.');
             return;
         }
 
         new Chart(ctx, {
-            type: 'line',
+            // ✨ ALTERAÇÃO: Trocamos 'line' por 'bar'
+            type: 'bar',
             data: {
                 labels: json.labels,
                 datasets: [{
-                    label: 'Tempo de Produção por Hora (s)', 
+                    label: 'Tempo de Produção por Hora (s)',
                     data: json.data,
-                    fill: false,
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    tension: 0.1
+
+                    backgroundColor: 'rgb(78, 226, 133, 0.6)',
+                    borderColor: 'rgb(78, 226, 133)',
+                    borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false, 
+                maintainAspectRatio: false,
                 plugins: {
                     title: { display: true, text: 'Tempo de Produção por Hora' }
                 },
@@ -157,8 +156,8 @@ fetch('http://localhost:3000/api/chart-producao-tecido')
                 datasets: [{
                     label: 'Total Produzido (m)',
                     data: json.data,
-                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: '#2EC9FF',
+                    borderColor: '#2EC9FF',
                     borderWidth: 1
                 }]
             },

@@ -103,7 +103,6 @@ app.get('/api/chart-meta', async (req, res) => {
         res.status(500).json({ error: 'Erro ao buscar dados do gráfico de metas.', details: erro.code });
     }
 });
-
 // Endpoint para o gráfico de Produção por Tipo de Tecido
 app.get('/api/chart-producao-tecido', async (req, res) => {
     try {

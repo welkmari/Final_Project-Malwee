@@ -201,10 +201,10 @@ body {
 
 .block {
     background: var(--card);
-    padding: 15px;
+    padding: 40px;
     border-radius: 10px;
     height: 350px; 
-    max-height: 450px;
+    max-height: 350px;
     overflow: hidden;
 }
 
