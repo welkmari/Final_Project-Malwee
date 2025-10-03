@@ -2,9 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     
-    // Mapeamento de termos de pesquisa para URLs
     const searchMap = {
-        // Páginas principais
         'home': '/Frontend/index.html',
         'início': '/Frontend/index.html',
         'inicio': '/Frontend/index.html',
@@ -20,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'configuracoes': 'configuracoes.html',
         'settings': 'configuracoes.html',
         
-        // Termos relacionados aos cards
         'resumo': '/Frontend/Dashboard/',
         'resumo produção': '/Frontend/Dashboard/',
         'resumo producao': '/Frontend/Dashboard/',
@@ -28,13 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
         'itens vendidos': '/Frontend/Relatorios/index.html',
         'vendas itens': '/Frontend/Relatorios/index.html',
         
-        // Logout
         'sair': '/Frontend/Login/login.html',
         'logout': '/Frontend/Login/login.html',
         'deslogar': '/Frontend/Login/login.html'
     };
     
-    // Função para realizar a pesquisa e redirecionar
     function performSearch() {
         const searchTerm = searchInput.value.trim().toLowerCase();
         

@@ -34,9 +34,24 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
             if(data.token){
                 localStorage.setItem('authToken', data.token);
 
-                mensagemElement.textContent
+                mensagemElement.textContent = `Bem-vindo, ${data.usuario.nome}! Acesso concedido.`
+                mensagemElement.style.color = 'green';
+
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 500);
+            }else{
+                throw new Error('LOgin falhoi. Token não recebido.');
             }
         })
     
-        .catch(error => console.log(error));
+        .catch(error => {
+            let erroMsg = error.message;
+
+            if(erroMsg.includes('E-mail ou senha inválidos.')){
+                erroMsg = 'E-mail ou senha incorretos.';
+            }else if(erroMsg.includes('Erro desconhecido')){
+                erroMsg = 'Nã'
+            }
+        });
 })

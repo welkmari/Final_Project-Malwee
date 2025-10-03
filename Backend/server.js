@@ -272,3 +272,4 @@ app.post('/login', (req, res) => {
 app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
 })
+
