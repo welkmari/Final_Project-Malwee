@@ -51,7 +51,10 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
             if(erroMsg.includes('E-mail ou senha inválidos.')){
                 erroMsg = 'E-mail ou senha incorretos.';
             }else if(erroMsg.includes('Erro desconhecido')){
-                erroMsg = 'Nã'
+                erroMsg = 'Não foi possível conectar ao servidor. Verifique o backend.';
             }
+            console.error('Erro de login: ', error);
+            mensagemElement.textContent = erroMsg;
+            mensagemElement.style.color = 'red';
         });
 })
