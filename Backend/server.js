@@ -2,9 +2,11 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
+const bcrypt = require('bcrypt')
 require('dotenv').config()
 
 const app = express();
+const saltRounds = 10;
 
 app.use(cors());
 app.use(express.json())
@@ -200,6 +202,15 @@ app.get('/api/chart-localidades', async (req, res) => {
         res.status(500).json({ error: 'Erro ao buscar dados de produção por localidade.', details: erro.code });
     }
 });
+
+app.post('/registro', (req, res) =>{
+    const {nome, email, senha} = req.body
+
+    bcrypt.hash(senha, saltRounds)
+    .then(senhaHash => {
+        
+    })
+})
 
 app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)

@@ -2,44 +2,148 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dados e Demandas</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
-  <link rel="stylesheet" href="producao.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="img/image-removebg-preview.png" type="image/gif" sizes="16x16">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados e Demandas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
+    <link rel="stylesheet" href="producao.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="img/image-removebg-preview.png" type="image/gif" sizes="16x16">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-  <div class="sidebar">
-    <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
+    <div class="sidebar">
+        <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
 
+        <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
+        <a href="/Frontend/index.html"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
+        <a href="Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
+        <a href="Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
+        <a href="Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
+        <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
 
-    <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
-    <a href="dashboard.html"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
-    <a href="Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
-    <a href="Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
-    <a href="Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
-    <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
-
-
-    <div id="logout-theme">
-        <a href="/Frontend/Logout/logout.html"><span class="material-symbols-outlined">logout</span><span
-                class="text">Sair</span></a>
-        <button id="theme-toggle" class="theme-btn">
-            <i class="ri-sun-line"></i>
-        </button>
+        <div id="logout-theme">
+            <a href="/Frontend/Logout/logout.html"><span class="material-symbols-outlined">logout</span><span
+                    class="text">Sair</span></a>
+            <button id="theme-toggle" class="theme-btn">
+                <i class="ri-sun-line"></i>
+            </button>
+        </div>
     </div>
-</div>
-<script src="tema.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="main">
+        <div class="container">
+            <div class="card">
+                <h2>Entrada de Produção</h2>
+                <p class="helper">Preencha os parâmetros abaixo para gerar o resumo de produção.</p>
+
+                <div class="grid">
+                    <div>
+                        <label for="espessura">Espessura (mm)</label>
+                        <input id="espessura" type="number" min="0" step="0.01" value="1.2">
+                    </div>
+
+                    <div>
+                        <label for="largura">Largura da tira (mm)</label>
+                        <input id="largura" type="number" min="0" step="0.1" value="50">
+                    </div>
+
+                    <div>
+                        <label for="tipo">Tipo de malha</label>
+                        <select id="tipo">
+                            <option value="malha_tecida">Malha tecida</option>
+                            <option value="malha_tricotada">Malha tricotada</option>
+                            <option value="malha_elastica">Malha elástica</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="metragem">Metragem (m)</label>
+                        <input id="metragem" type="number" min="0" step="0.01" value="100">
+                    </div>
+
+                    <div>
+                        <label for="saida">Saída (peças)</label>
+                        <input id="saida" type="number" min="0" step="1" value="200">
+                    </div>
+
+                    <div>
+                        <label for="densidade">Densidade (kg/m³) — parâmetro</label>
+                        <input id="densidade" type="number" min="0" step="1" value="900">
+                    </div>
+
+                    <div class="full">
+                        <label for="obs">Observações (opcional)</label>
+                        <input id="obs" type="text" placeholder="Notas rápidas sobre a produção">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button onclick="calcular()">Calcular resumo</button>
+                    <button class="secondary" onclick="limpar()">Limpar</button>
+                    <button class="secondary" onclick="exportarCSV()">Exportar CSV</button>
+                </div>
+            </div>
+
+            <aside class="card">
+                <h2>Resumo</h2>
+                <p class="helper">Visão rápida dos principais indicadores</p>
+
+                <div class="summary">
+                    <div class="stat">
+                        <div>
+                            <div class="label">Área por metro (m²/m)</div>
+                            <div class="value" id="area">0.00</div>
+                        </div>
+                        <div class="label">(largura × 1m)</div>
+                    </div>
+
+                    <div class="stat">
+                        <div>
+                            <div class="label">Volume total (m³)</div>
+                            <div class="value" id="volume">0.000</div>
+                        </div>
+                        <div class="label">(metragem × área × espess.)</div>
+                    </div>
+
+                    <div class="stat">
+                        <div>
+                            <div class="label">Gasto estimado (kg)</div>
+                            <div class="big-value" id="gasto">0.0</div>
+                        </div>
+                        <div class="label">(volume × densidade)</div>
+                    </div>
+
+                    <div class="stat">
+                        <div>
+                            <div class="label">Rendimento por peça (m)</div>
+                            <div class="value" id="rendimento">0.00</div>
+                        </div>
+                        <div class="label">(metragem / saída)</div>
+                    </div>
+
+                    <div>
+                        <p class="note">Tipo de malha selecionado: <strong id="tipoSelected">-</strong></p>
+                        <p class="note">Observações: <span id="obsText">-</span></p>
+                    </div>
+                </div>
+
+                <footer>
+                    Valores calculados automaticamente. Ajuste a densidade se desejar outra estimativa.
+                </footer>
+            </aside>
+        </div>
+    </div>
+
+    <script src="tema.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="producao.js"></script>
 </body>
 </html>

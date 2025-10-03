@@ -99,12 +99,10 @@ body {
 }
 
 #logout-theme {
-    margin-top: auto; 
-  }
-
-#theme-toggle {
-    margin-top: 0vh;
+    margin-top: auto;
+    width: 100%;
 }
+
 
 #theme-toggle:hover {
     background-color: #333;

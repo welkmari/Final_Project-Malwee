@@ -9,6 +9,7 @@ npm install express
 npm install cors
 npm install mysql2
 npm install dotenv
+npm install bcrypt
 
 --RODAR SERVIDOR--
 node --watch .\server\
