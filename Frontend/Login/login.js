@@ -6,4 +6,35 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
     const mensagemElement = document.getElementById('mensagem-login');
 
     mensagemElement.textContent = '';
+
+    fetch('http://localhost:3000/login', {
+    
+        method: 'POST',
+    
+        headers: {
+    
+            'Content-Type': 'application/json'
+    
+        },
+    
+        body: JSON.stringify({email, senha})
+    
+    })
+    
+        .then(response => {
+            if(!response.ok){
+                return response.json().then(errorData => {
+                    throw new Error(errorData.erro || 'Erro desconhecido ao fazer login.');
+                });
+            }
+            return response.json();
+        })
+    
+        .then(data => {
+            if(data.token){
+                localStorage.setItem('authToken', datad)
+            }
+        })
+    
+        .catch(error => console.log(error));
 })
