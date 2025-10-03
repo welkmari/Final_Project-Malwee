@@ -13,10 +13,11 @@
     <div class="login-container">
         <h1>Login</h1>
         <p>Bem-vindos</p>
-        <form action="index.html" method="GET">
+
+        <form id="loginForm"> 
             <div class="form-group">
-                <label for="usuario">Usuário</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Coloque o seu usuário" required>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Coloque o seu e-mail" required>
             </div>
             <div class="form-group">
                 <label for="senha">Senha</label>
@@ -25,12 +26,18 @@
             <div class="senha-esquecida">
                 <a href="redefenir_senha.html">Esqueceu a senha?</a>
             </div>
-            <a type="submit" class="login-Button">LOGIN</a>
+            
+            <button type="submit" class="login-Button">LOGIN</button>
+            
+            <span id="mensagem-login" style="margin-top: 10px; display: block;"></span> 
         </form>
+
         <div class="registrar">
             Criar nova conta? <a href="/Frontend/Registro/registro.html">Registre-se aqui!</a>
         </div>
     </div>
+
+    <script src="login.js"></script> 
 </body>
 
 </html>

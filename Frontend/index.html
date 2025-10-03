@@ -21,14 +21,12 @@
   <div class="sidebar">
     <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
 
-
     <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
     <a href="/Frontend/Dashboard/"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
     <a href="/Frontend/Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
     <a href="/Frontend/Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
     <a href="/Frontend/Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
     <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
-
 
     <div id="logout-theme">
         <a href="/Frontend/Login/login.html"><span class="material-symbols-outlined">logout</span><span
@@ -37,7 +35,7 @@
             <i class="ri-sun-line"></i>
         </button>
     </div>
-</div>
+  </div>
 
   <div class="main">
     <div class="header">
@@ -47,8 +45,8 @@
           <p>Visualização dos Dados e Demandas - Costura</p>
         </div>
         <div class="search-bar-top">
-          <input type="text" placeholder="Pesquisar...">
-          <button><i class="ri-search-line"></i></button>
+          <input type="text" id="search-input" placeholder="Pesquisar...">
+          <button id="search-button"><i class="ri-search-line"></i></button>
         </div>
       </div>
     </div>
@@ -68,16 +66,14 @@
           <i class="ri-gift-line" style="font-size: 30px;"></i>
         </div>
       </div>
-      <a href="https://grupomalwee.com.br/" target="_blank" style="text-decoration: none; color: inherit;">
+      <a href="https://grupomalwee.com.br/" target="_blank" style="text-decoration: none; color: inherit; width: 100%;">
         <div class="card-topo">
           <img class="img-malwee" src="/Frontend/img/image-removebg-preview.png" alt="Logo Grupo Malwee">
-          <div style="margin-right: 50vh;">
-            <h1 style=>Grupo Malwee</h1>
+          <div class="titulo-malwee">
+            <h1>Grupo Malwee</h1>
           </div>
         </div>
       </a>
-      
-      
     </div>
 
     <div class="dashboard">
@@ -105,10 +101,12 @@
       </div>
     </div>
   </div>
-  <script src="tema.js"></script>
+  
+  <script src="/Frontend/JS/tema.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="chart.js"></script>
+  <script src="/Frontend/JS/chart.js"></script>
+  <script src="/Frontend/JS/script.js"></script>
 </body>
 
 </html>

@@ -149,29 +149,35 @@ body {
 }
 
 .card-top {
-    flex-direction: column;
     background: var(--card);
     padding: 25px;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    transition: transform 0.2s;
+}
+
+.card-top:hover {
+    transform: scale(1.02);
 }
 
 .card-topo {
-    flex: 1;
     background: var(--card);
     padding: 35px;
     border-radius: 10px;
+    width: 100%;            
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    grid-column: 1 / -1;     /* ocupa todas as colunas caso esteja dentro de um grid */
 }
 
 .img-malwee {
-    margin-left: 80px;
-    max-width: 30px;
-    max-height: 60px;
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 20px;
     object-fit: contain;
 }
 
@@ -304,3 +310,8 @@ body {
 .search-bar-top button:hover {
     background-color: #cfcfcf;
 }
+
+.titulo-malwee {
+    flex: 1;           
+    text-align: center;
+  }

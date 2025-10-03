@@ -43,10 +43,10 @@
             </div>
             <div class="user-info">
                 <div class="user-details">
-                    <strong>Douglas Vieira Da Silva</strong>
-                    <span>Controle de Portaria</span>
+                    <strong>Henrique Gustavo </strong>
+                    <span>Controle de Estoque</span>
                 </div>
-                <a href="#" class="logout-link">Sair</a>
+                <a href="/Frontend/Login/login.html" class="logout-link">Sair</a>
             </div>
         </header>
     
@@ -60,35 +60,45 @@
                 <div class="card-body">
                     <form class="filter-form">
                         <div class="form-group">
-                            <label for="visitante">Visitante</label>
+                            <label for="visitante">Produto</label>
                             <input type="text" id="visitante" value="Aldenor Lemos Silva">
                         </div>
                         <div class="form-group">
-                            <label for="data-inicial">Data Inicial</label>
+                            <label for="data-inicial">Data Entrada</label>
                             <input type="date" id="data-inicial" value="2023-04-14">
                         </div>
                         <div class="form-group">
-                            <label for="data-final">Data Final</label>
+                            <label for="data-final">Data Saida</label>
                             <input type="date" id="data-final" value="2023-04-14">
                         </div>
                         <div class="form-group">
-                            <label for="unidade">Unidade</label>
-                            <select id="unidade">
-                                <option>Todas</option>
-                            </select>
-                        </div>
+                            <label for="quantidade">Quantidade</label>
+                            <input type="number" id="quantidade" name="quantidade" min="1" step="1" placeholder="Digite a quantidade">
+                        </div>                        
                         <div class="form-group">
-                            <label for="tipo-ocorrencia">Tipo de Ocorrência</label>
-                            <select id="tipo-ocorrencia">
-                                <option>Ambas</option>
+                            <label for="tipo-produto">Tipo do produto</label>
+                            <select id="tipo-produto" name="tipo-produto">
+                                <option value="">Selecione</option>
+                                <option value="alimento">Alimento</option>
+                                <option value="bebida">Bebida</option>
+                                <option value="eletronico">Eletrônico</option>
+                                <option value="vestuario">Vestuário</option>
+                                <option value="cosmetico">Cosmético</option>
+                                <option value="limpeza">Limpeza</option>
+                                <option value="outros">Outros</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="modo-exibicao">Modo de Exibição</label>
-                            <select id="modo-exibicao">
-                                <option>Sintético</option>
+                            <select id="modo-exibicao" name="modo-exibicao">
+                                <option value="sintetico">Sintético</option>
+                                <option value="detalhado">Detalhado</option>
+                                <option value="tabela">Tabela</option>
+                                <option value="grafico">Gráfico</option>
                             </select>
                         </div>
+                        
                     </form>
                     <div class="form-actions">
                         <button type="button" class="btn btn-secondary">Limpar</button>
@@ -120,28 +130,49 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Nome Completo <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Nome Produto <i class="ri-arrow-up-down-line"></i></th>
                                     <th>Responsável Cadastro <i class="ri-arrow-up-down-line"></i></th>
                                     <th>Documentos <i class="ri-arrow-up-down-line"></i></th>
                                     <th>Data <i class="ri-arrow-up-down-line"></i></th>
-                                    <th>Nome Usuário Registro Entrada <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Nome Produto Registro Entrada <i class="ri-arrow-up-down-line"></i></th>
                                     <th>Horário de Entrada <i class="ri-arrow-up-down-line"></i></th>
-                                    <th>Nome Usuário Registro Saída <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Nome Produto Registro Saída <i class="ri-arrow-up-down-line"></i></th>
                                     <th>Horário de Saída <i class="ri-arrow-up-down-line"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Aldenor Lemos Silva</td>
-                                    <td>TARCISIO PEREIRA DOS SANTOS JUNIOR</td>
-                                    <td>OAB:</td>
-                                    <td>14/04/2023</td>
-                                    <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
-                                    <td>14/04/2023 10:15:57</td>
-                                    <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
-                                    <td>14/04/2023 10:16:42</td>
+                                    <td>Notebook Dell Inspiron 15</td>
+                                    <td>João da Silva</td>
+                                    <td>NF12345</td>
+                                    <td>03/10/2025</td>
+                                    <td>Notebook Dell Inspiron 15</td>
+                                    <td>03/10/2025 09:30:00</td>
+                                    <td>Notebook Dell Inspiron 15</td>
+                                    <td>03/10/2025 17:45:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Mouse Logitech MX Master 3</td>
+                                    <td>Maria Oliveira</td>
+                                    <td>NF12346</td>
+                                    <td>03/10/2025</td>
+                                    <td>Mouse Logitech MX Master 3</td>
+                                    <td>03/10/2025 10:00:00</td>
+                                    <td>Mouse Logitech MX Master 3</td>
+                                    <td>03/10/2025 16:20:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Teclado Mecânico Redragon</td>
+                                    <td>Carlos Pereira</td>
+                                    <td>NF12347</td>
+                                    <td>03/10/2025</td>
+                                    <td>Teclado Mecânico Redragon</td>
+                                    <td>03/10/2025 11:15:00</td>
+                                    <td>Teclado Mecânico Redragon</td>
+                                    <td>03/10/2025 15:50:00</td>
                                 </tr>
                             </tbody>
+                            
                         </table>
                     </div>
     
