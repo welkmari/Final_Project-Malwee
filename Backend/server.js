@@ -248,7 +248,8 @@ app.post('/login', (req, res) => {
 
         const token = jwt.sign(
             {id: usuarioEncontrado.id, nome: usuarioEncontrado.nome},
-            JW
+            JWT_SECRET,
+            {ex}
         )
     })
 })
