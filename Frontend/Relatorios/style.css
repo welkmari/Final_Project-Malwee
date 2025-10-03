@@ -201,7 +201,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Estilos dos Cards */
+
 .card {
     background: var(--card);
     border: 1px solid #333;
@@ -224,7 +224,7 @@ body {
     padding: 20px;
 }
 
-/* Estilos do Formulário de Filtro */
+
 .filter-form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -258,7 +258,7 @@ body {
     border-color: var(--accent1);
 }
 
-/* Botões */
+
 .btn {
     padding: 10px 20px;
     border: none;
@@ -270,7 +270,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #3b82f6; /* Azul */
+    background-color: #3b82f6; 
     color: white;
 }
 
@@ -279,7 +279,7 @@ body {
 }
 
 .btn-secondary {
-    background-color: #6b7280; /* Cinza */
+    background-color: #6b7280; 
     color: white;
 }
 
@@ -328,7 +328,6 @@ body {
     color: var(--text);
 }
 
-/* Tabela de Resultados */
 .table-container {
     overflow-x: auto; /* Para rolagem horizontal em telas pequenas */
 }

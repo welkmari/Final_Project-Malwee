@@ -8,7 +8,7 @@ document.getElementById('registroForm').addEventListener('submit', function(e){
 
     mensagemElement.textContent - '';
 
-    fetch('http://localhost:3000;/registrar', {
+    fetch('http://localhost:3000/registrar', {
     
         method: 'POST',
     
