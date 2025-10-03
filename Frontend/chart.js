@@ -1,17 +1,18 @@
+// Gráfico 'Eficiência da máquina (%)'
+
 fetch('http://localhost:3000/api/chart-data')
     .then(response => {
-        // Verifica se a resposta foi bem-sucedida (status 200-299)
+       
         if (!response.ok) {
             throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
-        // Converte a resposta para JSON
+        
         return response.json();
     })
     .then(json => {
-        // Os dados dinâmicos estão em 'json.labels' e 'json.data'
-        const ctx = document.getElementById('meuGrafico').getContext('2d');
 
-        // Inicializa o Chart.js usando os dados do JSON
+        const ctx = document.getElementById('graficoEficiencia').getContext('2d');
+
         const meuGrafico = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -49,11 +50,10 @@ fetch('http://localhost:3000/api/chart-data')
         });
     })
     .catch(error => {
-        // Trata qualquer erro (se o backend estiver offline ou falhar)
-        console.error('Houve um erro ao buscar os dados do gráfico (meuGrafico):', error);
-        const canvas = document.getElementById('meuGrafico');
+        console.error('Houve um erro ao buscar os dados do gráfico (graficoEficiencia):', error);
+        const canvas = document.getElementById('graficoEficiencia');
         if (canvas) {
-            canvas.style.display = 'none'; // Esconde o canvas vazio
+            canvas.style.display = 'none'; 
             const errorDiv = document.createElement('div');
             errorDiv.textContent = 'Erro ao carregar o gráfico. Verifique o servidor Node.js e a conexão.';
             errorDiv.style.color = 'red';
@@ -61,6 +61,7 @@ fetch('http://localhost:3000/api/chart-data')
         }
     });
 
+// Gráfico 'Atingimento de Meta'
 fetch('http://localhost:3000/api/chart-meta')
     .then(response => {
         if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
@@ -97,8 +98,7 @@ fetch('http://localhost:3000/api/chart-meta')
     })
     .catch(error => console.error('Houve um erro ao buscar os dados do gráfico (Atingimento de Meta):', error));
 
-// chart.js
-
+//Gráfico 'Produção ao Longo do Tempo (m)'
 fetch('http://localhost:3000/api/chart-producao-tempo')
     .then(response => {
         if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
@@ -113,7 +113,6 @@ fetch('http://localhost:3000/api/chart-producao-tempo')
         }
 
         new Chart(ctx, {
-            // ✨ ALTERAÇÃO: Trocamos 'line' por 'bar'
             type: 'bar',
             data: {
                 labels: json.labels,
@@ -142,6 +141,8 @@ fetch('http://localhost:3000/api/chart-producao-tempo')
         });
     })
     .catch(error => console.error('Houve um erro ao buscar ou renderizar o gráfico (Produção Tempo):', error));
+
+//Gráfico 'Gasto de material (real x previsto)'
 fetch('http://localhost:3000/api/chart-producao-tecido')
     .then(response => {
         if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
@@ -177,7 +178,7 @@ fetch('http://localhost:3000/api/chart-producao-tecido')
     })
     .catch(error => console.error('Houve um erro ao buscar os dados do gráfico (Produção Tecido):', error));
 
-
+//Gráfico 'Produção por Localidade (Máquina)'
 fetch('http://localhost:3000/api/chart-localidades')
     .then(response => {
         if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
@@ -186,7 +187,7 @@ fetch('http://localhost:3000/api/chart-localidades')
     .then(json => {
         const ctx = document.getElementById('graficoLocalidades').getContext('2d');
         new Chart(ctx, {
-            type: 'pie', // Gráfico de pizza fica bom para essa visualização
+            type: 'pie', 
             data: {
                 labels: json.labels,
                 datasets: [{

@@ -1,4 +1,4 @@
-
+// Bibliotecas
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
@@ -27,11 +27,9 @@ const pool = mysql.createPool({
     connectionLimit: 10
 });
 
-// Rota de teste (já existente)
 app.get('/', async (req, res) => {
-    // ... código existente que testa a conexão e retorna todos os dados
     try {
-        const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); // Limitei para não sobrecarregar
+        const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); 
 
         res.status(200).json({
             message: 'Conexão com Node.js e DB OK!',
@@ -48,10 +46,9 @@ app.get('/', async (req, res) => {
     }
 });
 
-// Rota original para o primeiro gráfico (já existente)
+//Gráfico 'Eficiência da máquina (%)'
 app.get('/api/chart-data', async (req, res) => {
     try {
-        // SQL: Calcula a média de Metros Produzidos (AVG) agrupado por Máquina
         const sqlQuery = `
             SELECT 
                 Maquina, 
@@ -66,11 +63,9 @@ app.get('/api/chart-data', async (req, res) => {
 
         const [results] = await pool.query(sqlQuery);
 
-        // Formata os dados no padrão do Chart.js
         const labels = results.map(row => `Máquina ${row.Maquina}`);
-        const data = results.map(row => parseFloat(row.media_metros).toFixed(2)); // Arredonda para 2 casas decimais
+        const data = results.map(row => parseFloat(row.media_metros).toFixed(2)); 
 
-        // Retorna o JSON formatado
         res.json({ labels, data });
 
     } catch (erro) {
@@ -82,15 +77,13 @@ app.get('/api/chart-data', async (req, res) => {
     }
 });
 
-// Endpoint alternativo para debug
+//Gráfico 'Atingimento de Meta'
 app.get('/api/chart-meta', async (req, res) => {
     try {
-        // Primeiro, vamos verificar os valores únicos no banco
         const debugQuery = `SELECT DISTINCT \`Tarefa completa?\` FROM data`;
         const [debugResults] = await pool.query(debugQuery);
         console.log('Valores únicos de "Tarefa completa?":', debugResults);
 
-        // Query principal com mapeamento manual
         const query = `
             SELECT 
                 \`Tarefa completa?\` as valor_original,
@@ -103,7 +96,6 @@ app.get('/api/chart-meta', async (req, res) => {
         
         console.log('Resultados brutos:', results);
         
-        // Mapeamento manual para garantir os labels corretos
         const labelMap = {
             '0': 'Incompleta',
             '1': 'Completa',
@@ -135,7 +127,7 @@ app.get('/api/chart-meta', async (req, res) => {
 });
 
     
-// Endpoint para o gráfico de Produção por Tipo de Tecido
+//Gráfico 'Gasto de material (real x previsto)'
 app.get('/api/chart-producao-tecido', async (req, res) => {
     try {
         const query = `
@@ -154,7 +146,7 @@ app.get('/api/chart-producao-tecido', async (req, res) => {
 });
 
 
-// Endpoint para o gráfico de Produção ao Longo do Tempo
+//Gráfico 'Produção ao Longo do Tempo'
 app.get('/api/chart-producao-tempo', async (req, res) => {
     try {
         const query = `
@@ -184,6 +176,8 @@ app.get('/api/chart-producao-tempo', async (req, res) => {
         res.status(500).json({ error: 'Erro ao buscar dados de produção ao longo do tempo.', details: erro.code });
     }
 });
+
+//Gráfico 'Produção por Localidade (Máquina)'
 app.get('/api/chart-localidades', async (req, res) => {
     try {
         const query = `
@@ -196,7 +190,6 @@ app.get('/api/chart-localidades', async (req, res) => {
         `;
         const [results] = await pool.query(query);
 
-        // Formata os dados para o Chart.js
         const labels = results.map(item => `Localidade ${item.Maquina}`);
         const data = results.map(item => item.total_produzido);
 

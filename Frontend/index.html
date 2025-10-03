@@ -19,22 +19,25 @@
 
 <body>
   <div class="sidebar">
-    <img class="malweeIMG" src="img/image-removebg-preview.png" alt="Icone Malwee">
-  
-    <a href="index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
+    <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
+
+
+    <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
     <a href="dashboard.html"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
     <a href="Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
     <a href="Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
     <a href="Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
     <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
 
+
     <div id="logout-theme">
-      <a href="/Frontend/Logout/logout.html"><span class="material-symbols-outlined" style="margin-bottom: 15px; margin-left: 7.2px;">logout</span><span class="text" style="margin-bottom: 15px;">Sair</span></a>
-      <button id="theme-toggle" class="theme-btn">
-        <i class="ri-sun-line"></i><span class="text"></span>
-      </button>
+        <a href="/Frontend/Logout/logout.html"><span class="material-symbols-outlined">logout</span><span
+                class="text">Sair</span></a>
+        <button id="theme-toggle" class="theme-btn">
+            <i class="ri-sun-line"></i>
+        </button>
     </div>
-  </div>
+</div>
 
   <div class="main">
     <div class="header">
@@ -53,11 +56,11 @@
     <div class="cards-top">
       <div class="cards-tops">
         <div class="card-top">
-          <span>Detalhes da Produção</span>
+          <span>Custos da Produção</span>
           <i class="ri-money-dollar-circle-line" style="font-size: 30px;"></i>
         </div>
         <div class="card-top">
-          <span>Pedidos</span>
+          <span>Produção</span>
           <i class="ri-shopping-cart-line" style="font-size: 30px;"></i>
         </div>
         <div class="card-top">
@@ -78,7 +81,7 @@
       </div>
       <div class="block">
         <h3>Eficiência da máquina (%)</h3>
-        <canvas id="meuGrafico" width="400" height="200"></canvas>
+        <canvas id="graficoEficiencia" width="400" height="200"></canvas>
       </div>
       <div class="dashboard2">
         <div class="block">
@@ -88,10 +91,6 @@
         <div class="block">
           <h3>Atingimento de Meta</h3>
           <canvas id="graficoAtingimentoMeta" width="400" height="200"></canvas>
-        </div>
-        <div class="block">
-          <h3>Produção por Localidade (Máquina)</h3>
-          <canvas id="graficoLocalidades" width="400" height="200"></canvas>
         </div>
         <div class="block">
           <h3>Produção por Localidade (Máquina)</h3>
