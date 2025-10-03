@@ -11,7 +11,6 @@ const saltRounds = 10;
 app.use(cors());
 app.use(express.json())
 
-//Pega os dados do .env
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
