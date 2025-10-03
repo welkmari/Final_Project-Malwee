@@ -32,7 +32,9 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
     
         .then(data => {
             if(data.token){
-                localStorage.setItem('authToken', datad)
+                localStorage.setItem('authToken', data.token);
+
+                
             }
         })
     
