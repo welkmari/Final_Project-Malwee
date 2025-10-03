@@ -207,6 +207,10 @@ app.get('/api/chart-localidades', async (req, res) => {
 app.post('/registro', (req, res) =>{
     const {nome, email, senha} = req.body;
 
+    if(!nome || !email || !senha){
+        return res.status(400).json({erro: 'Todos os ampos são obrigatórios'})
+    }
+
     bcrypt.hash(senha, saltRounds)
     .then(senhaHash => {
         return pool.execute(
@@ -223,6 +227,31 @@ app.post('/registro', (req, res) =>{
         res.status(500).json({erro: 'Erro interno no servidor.'})
     });
 });
+
+app.post('/login', (req, res) => {
+    const {email, senha} = req.body;
+
+    if(!email || !senha){
+        return res.status(400).json({erro: 'E-mail e senha são obrigatórios'})
+    }
+
+    let usuarioEncontrado;
+
+    pool.query('SELECT id, nome, senha FROM usuario where email = ?', [email])
+    
+    .then(([rows]) => {
+        usuarioEncontrado = rows[0];
+
+        if(!usuarioEncontrado){
+            return Promise.reject({status: 401, message: 'E-mail ou senha inválidos.'});
+        }
+
+        const token = jwt.sign(
+            {id: usuarioEncontrado.id, nome: usuarioEncontrado.nome},
+            JW
+        )
+    })
+})
 
 app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
