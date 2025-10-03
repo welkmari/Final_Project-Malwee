@@ -36,148 +36,136 @@
             </button>
         </div>
     </div>
-    <div class="main">
-        <header class="top-header">
-            <div class="header-title">
-                <h1>Relatórios</h1>
-                <div class="breadcrumbs">
-                    Relatórios / Relatórios
-                </div>
+    <main class="main">
+        <header class="header">
+            <div class="breadcrumbs">
+                Relatórios / Relatórios
             </div>
             <div class="user-info">
-                <span>Douglas Vieira Da Silva</span>
-                <a href="#">Sair</a>
+                <div class="user-details">
+                    <strong>Douglas Vieira Da Silva</strong>
+                    <span>Controle de Portaria</span>
+                </div>
+                <a href="#" class="logout-link">Sair</a>
             </div>
         </header>
-
-        <div class="page-content">
-            <aside class="content-sidebar">
-                <ul>
-                    <li><a href="#"><i class="ri-home-line"></i> Início</a></li>
-                    <li><a href="#"><i class="ri-shield-user-line"></i> Administração</a></li>
-                    <li><a href="#" class="has-arrow"><i class="ri-settings-3-line"></i> Configurações <i class="ri-arrow-down-s-line"></i></a></li>
-                    <li><a href="#" class="active"><i class="ri-file-chart-line"></i> Relatórios</a></li>
-                    <li><a href="#"><i class="ri-building-line"></i> Setor Destino</a></li>
-                    <li><a href="#"><i class="ri-map-pin-line"></i> Coordenadas</a></li>
-                    <li><a href="#"><i class="ri-traffic-light-line"></i> Controle de Tráfego</a></li>
-                    <li><a href="#"><i class="ri-alarm-warning-line"></i> Alertas</a></li>
-                </ul>
-            </aside>
-
-            <main class="content-panel">
-                <div class="card">
-                    <div class="card-header">
-                        <span><i class="ri-filter-3-line"></i> Filtros de pesquisa</span>
-                        <i class="ri-subtract-line"></i>
-                    </div>
-                    <div class="card-body">
-                        <div class="filter-grid">
-                            <div class="form-group">
-                                <label for="visitante">Visitante</label>
-                                <input type="text" id="visitante" value="Aldenor Lemos Silva">
-                            </div>
-                            <div class="form-group">
-                                <label for="data-inicial">Data Inicial</label>
-                                <input type="text" id="data-inicial" value="14/04/2023" placeholder="dd/mm/aaaa">
-                            </div>
-                            <div class="form-group">
-                                <label for="data-final">Data Final</label>
-                                <input type="text" id="data-final" value="14/04/2023" placeholder="dd/mm/aaaa">
-                            </div>
-                            <div class="form-group">
-                                <label for="unidade">Unidade</label>
-                                <select id="unidade">
-                                    <option>Todas</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tipo-ocorrencia">Tipo de Ocorrência</label>
-                                <select id="tipo-ocorrencia">
-                                    <option>Ambas</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="modo-exibicao">Modo de Exibição</label>
-                                <select id="modo-exibicao">
-                                    <option>Sintético</option>
-                                </select>
-                            </div>
+    
+        <div class="content-wrapper">
+            <h1>Relatórios</h1>
+    
+            <div class="card">
+                <div class="card-header">
+                    <h2>Filtros de pesquisa</h2>
+                </div>
+                <div class="card-body">
+                    <form class="filter-form">
+                        <div class="form-group">
+                            <label for="visitante">Visitante</label>
+                            <input type="text" id="visitante" value="Aldenor Lemos Silva">
                         </div>
-                        <div class="filter-actions">
-                            <button class="btn btn-secondary">Limpar</button>
-                            <button class="btn btn-primary"><i class="ri-search-line"></i> Buscar</button>
+                        <div class="form-group">
+                            <label for="data-inicial">Data Inicial</label>
+                            <input type="date" id="data-inicial" value="2023-04-14">
+                        </div>
+                        <div class="form-group">
+                            <label for="data-final">Data Final</label>
+                            <input type="date" id="data-final" value="2023-04-14">
+                        </div>
+                        <div class="form-group">
+                            <label for="unidade">Unidade</label>
+                            <select id="unidade">
+                                <option>Todas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo-ocorrencia">Tipo de Ocorrência</label>
+                            <select id="tipo-ocorrencia">
+                                <option>Ambas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modo-exibicao">Modo de Exibição</label>
+                            <select id="modo-exibicao">
+                                <option>Sintético</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary">Limpar</button>
+                        <button type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="card-header">
+                    <h2>Resultado da pesquisa</h2>
+                </div>
+                <div class="card-body">
+                    <div class="results-toolbar">
+                        <div class="toolbar-buttons">
+                            <button class="btn btn-toolbar">Copiar</button>
+                            <button class="btn btn-toolbar">Excel</button>
+                            <button class="btn btn-toolbar">CSV</button>
+                            <button class="btn btn-toolbar">PDF</button>
+                            <button class="btn btn-toolbar">Exibindo colunas</button>
+                            <button class="btn btn-toolbar">Agrupar</button>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" placeholder="Pesquisar">
+                        </div>
+                    </div>
+    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome Completo <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Responsável Cadastro <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Documentos <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Data <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Nome Usuário Registro Entrada <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Horário de Entrada <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Nome Usuário Registro Saída <i class="ri-arrow-up-down-line"></i></th>
+                                    <th>Horário de Saída <i class="ri-arrow-up-down-line"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Aldenor Lemos Silva</td>
+                                    <td>TARCISIO PEREIRA DOS SANTOS JUNIOR</td>
+                                    <td>OAB:</td>
+                                    <td>14/04/2023</td>
+                                    <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
+                                    <td>14/04/2023 10:15:57</td>
+                                    <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
+                                    <td>14/04/2023 10:16:42</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <div class="pagination-footer">
+                        <div class="page-info">
+                            <span>10 resultados por página</span>
+                            <span>Mostrando de 1 até 1 de 1 registros</span>
+                        </div>
+                        <div class="pagination">
+                            <a href="#">Anterior</a>
+                            <a href="#" class="active">1</a>
+                            <a href="#">Próxima</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span><i class="ri-list-check"></i> Resultado da pesquisa</span>
-                        <i class="ri-subtract-line"></i>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-controls">
-                            <div class="table-buttons">
-                                <button class="btn btn-secondary">Copiar</button>
-                                <button class="btn btn-secondary">Excel</button>
-                                <button class="btn btn-secondary">CSV</button>
-                                <button class="btn btn-secondary">PDF</button>
-                                <button class="btn btn-secondary">Exibindo colunas <i class="ri-arrow-down-s-line"></i></button>
-                            </div>
-                            <div class="table-search">
-                                <input type="text" placeholder="Pesquisar">
-                            </div>
-                        </div>
-
-                        <div class="table-responsive">
-                            <table class="results-table">
-                                <thead>
-                                    <tr>
-                                        <th>Nome Completo</th>
-                                        <th>Responsável Cadastro</th>
-                                        <th>Documentos</th>
-                                        <th>Data</th>
-                                        <th>Usuário Entrada</th>
-                                        <th>Horário Entrada</th>
-                                        <th>Usuário Saída</th>
-                                        <th>Horário Saída</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Aldenor Lemos Silva</td>
-                                        <td>TARCISIO PEREIRA DOS SANTOS JUNIOR</td>
-                                        <td>OAB:</td>
-                                        <td>14/04/2023</td>
-                                        <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
-                                        <td>14/04/2023 10:15:57</td>
-                                        <td>AMEDES ELEUTERIO DA COSTA JUNIOR</td>
-                                        <td>14/04/2023 10:16:42</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <div class="pagination-footer">
-                            <div class="results-per-page">
-                                <select>
-                                    <option>10</option>
-                                    <option>25</option>
-                                    <option>50</option>
-                                </select>
-                                <span> resultados por página</span>
-                            </div>
-                            <span class="records-info">Mostrando de 1 até 1 de 1 registros</span>
-                            <div class="pagination-controls">
-                                <button class="btn btn-secondary disabled">Anterior</button>
-                                <button class="btn btn-primary-outline">1</button>
-                                <button class="btn btn-secondary disabled">Próxima</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+            </div>
         </div>
-    </div>
+    
+        <footer class="footer">
+            <span>© 2023 - Tribunal de Justiça do Estado do Ceará - Todos os Direitos Reservados</span>
+            <span>Tempo Sessão: 07:15:33</span>
+        </footer>
+    </main>
+    <script src="relatorio.js"></script>
+    <script src="tema.js"></script>
 </body>
 </html>
