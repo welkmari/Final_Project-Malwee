@@ -322,3 +322,36 @@ body {
     border-radius: 5px;
     border-color: var(--border-color);
 }
+
+.light-theme {
+    --bg-dark: #f5f5f5;
+    --sidebar: #e0e0e0;
+    --card: #ffffff;
+    --text: #111;
+    --accent1: #0ea5e9;
+    --accent2: #9333ea;
+    --accent3: #06b6d4;
+    --search-bg: #eaeaea;
+}
+
+.theme-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent2);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 12px;
+    margin-left: 20px;
+}
+
+.theme-btn:hover {
+    background: var(--accent1);
+    transform: scale(1.05);
+}
