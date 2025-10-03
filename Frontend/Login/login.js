@@ -5,5 +5,5 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
     const senha = document.getElementById('senha').value;
     const mensagemElement = document.getElementById('mensagem-login');
 
-    
+    mensagemElement.textContent = '';
 })

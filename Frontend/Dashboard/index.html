@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Vendas</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f3fa;
+      margin: 0;
+      padding: 0;
+    }
+    .sidebar {
+      width: 220px;
+      background: #4b0082;
+      color: white;
+      height: 100vh;
+      float: left;
+      padding: 20px;
+    }
+    .content {
+      margin-left: 240px;
+      padding: 20px;
+    }
+    .cards {
+      display: flex;
+      gap: 20px;
+    }
+    .card {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .charts {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    canvas {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Filtros</h2>
+    <p><strong>Ano:</strong></p>
+    <select>
+      <option>2017</option>
+      <option selected>2018</option>
+      <option>2019</option>
+    </select>
+    <p><strong>Mês:</strong></p>
+    <select>
+      <option>Todos</option>
+      <option>Janeiro</option>
+      <option>Fevereiro</option>
+    </select>
+  </div>
+
+  <div class="content">
+    <h1>Visão Geral de Vendas</h1>
+    
+    <div class="cards">
+      <div class="card">
+        <h3>Faturamento</h3>
+        <p><strong>R$ 10.214.809</strong></p>
+        <span style="color:green;">+54% vs ano anterior</span>
+      </div>
+      <div class="card">
+        <h3>Qtd Vendas</h3>
+        <p><strong>32.065</strong></p>
+        <span style="color:green;">+83% vs ano anterior</span>
+      </div>
+      <div class="card">
+        <h3>Ticket Médio</h3>
+        <p><strong>R$ 318,57</strong></p>
+        <span style="color:red;">-16% vs ano anterior</span>
+      </div>
+      <div class="card">
+        <h3>Positivação</h3>
+        <p><strong>667</strong></p>
+        <span style="color:red;">-13% vs ano anterior</span>
+      </div>
+    </div>
+
+    <div class="charts">
+      <canvas id="lineChart" width="400" height="200"></canvas>
+      <canvas id="barChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Evolução de vendas
+    new Chart(document.getElementById("lineChart"), {
+      type: "line",
+      data: {
+        labels: ["2018 T1", "2018 T2", "2018 T3", "2018 T4"],
+        datasets: [
+          { 
+            label: "Faturamento",
+            data: [1000000, 2000000, 3000000, 4000000],
+            borderColor: "purple",
+            fill: false
+          },
+          { 
+            label: "Qtd Vendas",
+            data: [5000, 8000, 12000, 15000],
+            borderColor: "green",
+            fill: false
+          }
+        ]
+      }
+    });
+
+    // Ticket médio por produto
+    new Chart(document.getElementById("barChart"), {
+      type: "bar",
+      data: {
+        labels: ["Doces", "Cachaça", "Energéticos", "Farinha"],
+        datasets: [{
+          label: "Ticket Médio",
+          data: [380, 281, 243, 223],
+          backgroundColor: "blue"
+        }]
+      }
+    });
+  </script>
+
+</body>
+</html>
