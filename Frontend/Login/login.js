@@ -34,7 +34,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
             if(data.token){
                 localStorage.setItem('authToken', data.token);
 
-                
+                mensagemElement.textContent
             }
         })
     
