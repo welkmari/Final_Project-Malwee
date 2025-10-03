@@ -26,7 +26,8 @@ const pool = mysql.createPool({
     password: DB_PASSWORD,
     database: DB_DATABASE,
     waitForConnections: true,
-    connectionLimit: 10
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 app.get('/', async (req, res) => {
@@ -208,7 +209,12 @@ app.post('/registro', (req, res) =>{
 
     bcrypt.hash(senha, saltRounds)
     .then(senhaHash => {
-        
+        return pool.execute(
+            'INSERT INTO usuario (nome, email, senha) VALUES (?,?,?)',
+            [nome, email, senhaHash]
+        );
+    }).then(([result]) => {
+        res.status(201).json
     })
 })
 
