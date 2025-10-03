@@ -214,7 +214,12 @@ app.post('/registro', (req, res) =>{
             [nome, email, senhaHash]
         );
     }).then(([result]) => {
-        res.status(201).json
+        res.status(201).json({mensagem: 'Usuário registrado com sucesso!', id: result.insertId})
+    }).catch(error => {
+        if(erro.errno === 1062){
+            return res.status(409).json({erro: 'Este e-mail já está em uso.'})
+        }
+        console.error('ERRO ao registrar usuário')
     })
 })
 
