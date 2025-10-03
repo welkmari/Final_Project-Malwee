@@ -249,8 +249,23 @@ app.post('/login', (req, res) => {
         const token = jwt.sign(
             {id: usuarioEncontrado.id, nome: usuarioEncontrado.nome},
             JWT_SECRET,
-            {ex}
-        )
+            {expiresIn: '1h'}
+        );
+
+        res.status(200).json({
+            mensagem: 'Login realizado com sucesso!',
+            token: token,
+            usuario: {id: usuarioEncontrado.id, nome: usuarioEncontrado.nome}
+        });
+    }).catch(error => {
+        const status = error.status || 500;
+        const message = error.message || 'Erro interno no servidor durante o login.';
+
+        if(status === 500){
+            console.error('ERRO interno no login: ', error);
+        }
+
+        res.status(status).json({erro: message})
     })
 })
 
