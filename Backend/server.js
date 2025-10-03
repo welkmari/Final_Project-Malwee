@@ -205,7 +205,7 @@ app.get('/api/chart-localidades', async (req, res) => {
 });
 
 app.post('/registro', (req, res) =>{
-    const {nome, email, senha} = req.body
+    const {nome, email, senha} = req.body;
 
     bcrypt.hash(senha, saltRounds)
     .then(senhaHash => {
@@ -219,9 +219,10 @@ app.post('/registro', (req, res) =>{
         if(erro.errno === 1062){
             return res.status(409).json({erro: 'Este e-mail já está em uso.'})
         }
-        console.error('ERRO ao registrar usuário')
-    })
-})
+        console.error('ERRO ao registrar usuário: ', error);
+        res.status(500).json({erro: 'Erro interno no servidor.'})
+    });
+});
 
 app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
