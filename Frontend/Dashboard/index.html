@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Vendas - Grupo Malwee</title>
+    <title>Dashboard de Produção - Grupo Malwee</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
     <link rel="stylesheet" href="/Frontend/Dashboard/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link rel="icon" href="img/image-removebg-preview.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="../img/image-removebg-preview.png" type="image/png">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap"
         rel="stylesheet">
@@ -25,7 +23,8 @@
         <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
         <a href="/Frontend/Dashboard/"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
         <a href="/Frontend/Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
-        <a href="/Frontend/Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
+        <a href="/Frontend/Relatorios/index.html"><i class="ri-bar-chart-line"></i><span
+                class="text">Relatórios</span></a>
         <a href="/Frontend/Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
         <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
 
@@ -106,15 +105,17 @@
             <div class="card">
                 <div class="card-header">
                     <div class="filter-tabs">
-                        <button class="tab-btn active">Todos</button>
-                        <button class="tab-btn">Evolução de Vendas</button>
-                        <button class="tab-btn">Visual</button>
-                        <button class="tab-btn">Tabela</button>
-                        <button class="tab-btn">Ticket Médio por Produto</button>
-                        <button class="tab-btn">Positivação por Produto</button>
+                        <button class="tab-btn active">Metros Produzidos</button>
+                        <button class="tab-btn">Quantidade de Tiras</button>
+                        <button class="tab-btn">Tipo de Tecidos</button>
+                        <button class="tab-btn">Sobras de Rolo</button>
+                        <button class="tab-btn">Tipo de Saída</button>
+                        <button class="tab-btn">Número da Tarefa</button>
+                        <button class="tab-btn">Tempo de Setup</button>
+                        <button class="tab-btn">Tarefa completa</button>
                     </div>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="dashboard-content">
                         <div class="chart-section">
@@ -182,7 +183,7 @@
                         </div>
                     </div>
 
-                
+
                     <div class="sales-table">
                         <table>
                             <thead>
@@ -303,5 +304,6 @@
     </main>
 
     <script src="tema.js"></script>
+    <script src="/Frontend/JS/chart.js"></script>
 </body>
 </html>
