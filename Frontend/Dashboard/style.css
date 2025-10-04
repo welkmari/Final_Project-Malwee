@@ -413,13 +413,13 @@ body {
   margin-bottom: 15px;
 }
 
-.positivity-grid {
+.summary-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
 
-.positivity-item {
+.summary-item {
   background: #2a2a2a;
   border-radius: 8px;
   padding: 12px;
@@ -427,14 +427,14 @@ body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-.product-name {
+.item-name {
   display: block;
   font-size: 13px;
   margin-bottom: 6px;
   color: #ccc;
 }
 
-.positivity-value {
+.summary-value {
   font-size: 18px;
   font-weight: 700;
   color: var(--accent2);
