@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard de Vendas</title>
@@ -47,9 +48,24 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
   </style>
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Produção - Grupo Malwee</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
+    <link rel="stylesheet" href="/Frontend/Dashboard/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="../img/image-removebg-preview.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap"
+        rel="stylesheet">
+>>>>>>> da73a5b508b90e43d166974fceb8924b48fe35f4
 </head>
 <body>
 
+<<<<<<< HEAD
   <div class="sidebar">
     <h2>Filtros</h2>
     <p><strong>Ano:</strong></p>
@@ -65,6 +81,15 @@
       <option>Fevereiro</option>
     </select>
   </div>
+=======
+        <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
+        <a href="/Frontend/Dashboard/"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
+        <a href="/Frontend/Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
+        <a href="/Frontend/Relatorios/index.html"><i class="ri-bar-chart-line"></i><span
+                class="text">Relatórios</span></a>
+        <a href="/Frontend/Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
+        <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
+>>>>>>> da73a5b508b90e43d166974fceb8924b48fe35f4
 
   <div class="content">
     <h1>Visão Geral de Vendas</h1>
@@ -92,6 +117,7 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     <div class="charts">
       <canvas id="lineChart" width="400" height="200"></canvas>
       <canvas id="barChart" width="400" height="200"></canvas>
@@ -137,3 +163,293 @@
 
 </body>
 </html>
+=======
+    <main class="main">
+        <header class="header">
+            <div class="breadcrumbs">
+                Dashboard / Visão geral de Produção
+            </div>
+            <div class="user-info">
+                <div class="user-details">
+                    <strong>Henrique Gustavo</strong>
+                    <span>Gerente de Vendas</span>
+                </div>
+                <a href="/Frontend/Login/login.html" class="logout-link">Sair</a>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <h1>VISÃO GERAL DE PRODUÇÃO</h1>
+
+            <!-- Cards de Métricas -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Metros Produzidos</h3>
+                        <i class="ri-money-dollar-circle-line"></i>
+                    </div>
+                    <div class="metric-value"></div>
+                    <div class="metric-comparison positive">
+                        <span></span> Vs. ao mês anterior
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Quantidade de Tiras</h3>
+                        <i class="ri-shopping-cart-line"></i>
+                    </div>
+                    <div class="metric-value"></div>
+                    <div class="metric-comparison positive">
+                        <span></span> Vs. ao mês anterior
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Tipo de Tecido</h3>
+                        <i class="ri-price-tag-3-line"></i>
+                    </div>
+                    <div class="metric-value"></div>
+                    <div class="metric-comparison negative">
+
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h3>Sobras de Rolo</h3>
+                        <i class="ri-trending-up-line"></i>
+                    </div>
+                    <div class="metric-value"></div>
+                    <div class="metric-comparison positive">
+                        <span></span> Vs ao mês anterior
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros e Abas -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="filter-tabs">
+                        <button class="tab-btn active">Metros Produzidos</button>
+                        <button class="tab-btn">Quantidade de Tiras</button>
+                        <button class="tab-btn">Tipo de Tecidos</button>
+                        <button class="tab-btn">Sobras de Rolo</button>
+                        <button class="tab-btn">Tipo de Saída</button>
+                        <button class="tab-btn">Número da Tarefa</button>
+                        <button class="tab-btn">Tempo de Setup</button>
+                        <button class="tab-btn">Tarefa completa</button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="dashboard-content">
+                        <div class="chart-section">
+                            <div class="chart-header">
+                                <h4>Visão Geral da Produção</h4>
+                                <div class="chart-legend">
+                                    <span class="legend-item">
+                                        <div class="legend-color faturamento"></div>
+                                       Produção
+                                    </span>
+                                    <span class="legend-item">
+                                        <div class="legend-color qtd-vendas"></div>
+                                        Quantidade
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="chart-placeholder">
+                                <div class="chart-bars">
+                                    <div class="bar-group">
+                                        <div class="bar faturamento-bar" style="height: 70%"></div>
+                                        <div class="bar qtd-bar" style="height: 50%"></div>
+                                        <div class="bar-label">Jan</div>
+                                    </div>
+                                    <div class="bar-group">
+                                        <div class="bar faturamento-bar" style="height: 85%"></div>
+                                        <div class="bar qtd-bar" style="height: 65%"></div>
+                                        <div class="bar-label">Fev</div>
+                                    </div>
+                                    <div class="bar-group">
+                                        <div class="bar faturamento-bar" style="height: 60%"></div>
+                                        <div class="bar qtd-bar" style="height: 45%"></div>
+                                        <div class="bar-label">Mar</div>
+                                    </div>
+                                    <div class="bar-group">
+                                        <div class="bar faturamento-bar" style="height: 95%"></div>
+                                        <div class="bar qtd-bar" style="height: 75%"></div>
+                                        <div class="bar-label">Abr</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="side-metrics">
+                            <div class="side-metric">
+                                <h4></h4>
+                                <div class="product-tickets">
+                                    <div class="ticket-item">
+                                        <span>Metros Produzidos</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Quantidade de Tiras</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Tipos de Tecido</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Sobras de Rolo</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Tipo de Saída</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Número da Tarefa</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Tempo de Setup</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                    <div class="ticket-item">
+                                        <span>Tarefa Completa</span>
+                                        <span class="ticket-value"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="sales-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Gerente</th>
+                                    <th>Faturamento</th>
+                                    <th>Qtd Vendas</th>
+                                    <th>Ticket Médio</th>
+                                    <th>Positivação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Gabriel Azevedo</td>
+                                    <td>R$5.497.085</td>
+                                    <td>18.950</td>
+                                    <td>R$350,08</td>
+                                    <td>577</td>
+                                </tr>
+                                <tr>
+                                    <td>Diego Carvalho</td>
+                                    <td>R$3.204.818</td>
+                                    <td>10.371</td>
+                                    <td>R$311,67</td>
+                                    <td>565</td>
+                                </tr>
+                                <tr>
+                                    <td>Eliseiro Souza</td>
+                                    <td>R$275.557</td>
+                                    <td>1.712</td>
+                                    <td>R$847,60</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Guianeta Correia</td>
+                                    <td>R$312.451</td>
+                                    <td>8.715</td>
+                                    <td>R$308,87</td>
+                                    <td>440</td>
+                                </tr>
+                                <tr>
+                                    <td>Julio Lima</td>
+                                    <td>R$770.679</td>
+                                    <td>5.484</td>
+                                    <td>R$326,29</td>
+                                    <td>555</td>
+                                </tr>
+                                <tr>
+                                    <td>Sofia Ribeiro</td>
+                                    <td>R$2.192.197</td>
+                                    <td>8.579</td>
+                                    <td>R$255,53</td>
+                                    <td>449</td>
+                                </tr>
+                                <tr>
+                                    <td>Felice Goncalves</td>
+                                    <td>R$995.370</td>
+                                    <td>3.504</td>
+                                    <td>R$284,03</td>
+                                    <td>376</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>R$10.214.809</strong></td>
+                                    <td><strong>32.065</strong></td>
+                                    <td><strong>R$318,57</strong></td>
+                                    <td><strong>667</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="production-section">
+                        <h4>Resumo de Produção</h4>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="item-name">Metros Produzidos</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Quantidade de Tiras</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Tipos de tecidos</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Sobras de rolo</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Tipo de Saída</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Número da Tarefa</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Tempo de Setup</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="item-name">Tarefa Completa</span>
+                                <span class="summary-value">72</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <span>© 2025 - Grupo Malwee Ltda - Todos os Direitos Reservados</span>
+        </footer>
+    </main>
+
+    <script src="/Frontend/JS/tema.js"></script>
+    <script src="/Frontend/JS/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>
+>>>>>>> da73a5b508b90e43d166974fceb8924b48fe35f4
