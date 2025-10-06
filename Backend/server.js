@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 const app = express();
@@ -219,7 +220,7 @@ app.post('/registro', (req, res) =>{
     }).then(([result]) => {
         res.status(201).json({mensagem: 'Usuário registrado com sucesso!', id: result.insertId})
     }).catch(error => {
-        if(erro.errno === 1062){
+        if(error.errno === 1062){
             return res.status(409).json({erro: 'Este e-mail já está em uso.'})
         }
         console.error('ERRO ao registrar usuário: ', error);
@@ -235,6 +236,7 @@ app.post('/login', (req, res) => {
     }
 
     let usuarioEncontrado;
+    const JWT_SECRET = process.env.JWT_SECRET;
 
     pool.query('SELECT id, nome, senha FROM usuario where email = ?', [email])
     
@@ -242,6 +244,13 @@ app.post('/login', (req, res) => {
         usuarioEncontrado = rows[0];
 
         if(!usuarioEncontrado){
+            return Promise.reject({status: 401, message: 'E-mail ou senha inválidos.'});
+        }
+        
+        return bcrypt.compare(senha, usuarioEncontrado.senha);
+    })
+    .then(match => {
+        if(!match){
             return Promise.reject({status: 401, message: 'E-mail ou senha inválidos.'});
         }
 
@@ -256,7 +265,8 @@ app.post('/login', (req, res) => {
             token: token,
             usuario: {id: usuarioEncontrado.id, nome: usuarioEncontrado.nome}
         });
-    }).catch(error => {
+    })
+    .catch(error => {
         const status = error.status || 500;
         const message = error.message || 'Erro interno no servidor durante o login.';
 
@@ -265,8 +275,8 @@ app.post('/login', (req, res) => {
         }
 
         res.status(status).json({erro: message})
-    })
-})
+    });
+});
 
 app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)

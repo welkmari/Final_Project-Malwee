@@ -11,5 +11,8 @@ npm install mysql2
 npm install dotenv
 npm install bcrypt
 
+--COMANDO PARA INSTALAR--
+npm i express cors mysql2 dotenv bcrypt
+
 --RODAR SERVIDOR--
 node --watch .\server\
