@@ -111,13 +111,27 @@ body {
   width: calc(100% - 250px);
 }
 
-.header {
-  background: var(--card);
-  border-bottom: 1px solid #333;
-  padding: 15px 25px;
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+
+
+.header h1 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header .title-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header p {
+  font-size: 14px;
+  color: #aaa;
 }
 
 .breadcrumbs {
