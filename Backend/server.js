@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); 
 
-        res.status(200).json({
+        res.status(200).json({ 
             message: 'Conexão com Node.js e DB OK!',
             total_records: rows.length,
             data: rows,
@@ -50,6 +50,7 @@ app.get('/', async (req, res) => {
 });
 
 //Gráfico 'Eficiência da máquina (%)'
+
 app.get('/api/chart-data', async (req, res) => {
     try {
         const sqlQuery = `
