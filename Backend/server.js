@@ -6,8 +6,12 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
+<<<<<<< Updated upstream
 const app = express();
 const saltRounds = 10;
+=======
+const app = express(); 
+>>>>>>> Stashed changes
 
 app.use(cors());
 app.use(express.json())
@@ -33,8 +37,13 @@ const pool = mysql.createPool({
 app.get('/', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); 
+<<<<<<< Updated upstream
 
         res.status(200).json({
+=======
+        
+        res.status(200).json({ 
+>>>>>>> Stashed changes
             message: 'Conexão com Node.js e DB OK!',
             total_records: rows.length,
             data: rows,
@@ -49,7 +58,10 @@ app.get('/', async (req, res) => {
     }
 });
 
+<<<<<<< Updated upstream
 //Gráfico 'Eficiência da máquina (%)'
+=======
+>>>>>>> Stashed changes
 app.get('/api/chart-data', async (req, res) => {
     try {
         const sqlQuery = `
