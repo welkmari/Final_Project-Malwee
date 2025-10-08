@@ -7,9 +7,12 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 const app = express();
 const saltRounds = 10;
 =======
+=======
+>>>>>>> Stashed changes
 const app = express(); 
 >>>>>>> Stashed changes
 
@@ -38,9 +41,12 @@ app.get('/', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
         res.status(200).json({
 =======
+=======
+>>>>>>> Stashed changes
         
         res.status(200).json({ 
 >>>>>>> Stashed changes
@@ -59,7 +65,10 @@ app.get('/', async (req, res) => {
 });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //Gráfico 'Eficiência da máquina (%)'
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 app.get('/api/chart-data', async (req, res) => {
