@@ -14,5 +14,23 @@ npm install bcrypt
 --COMANDO PARA INSTALAR--
 npm i express cors mysql2 dotenv bcrypt
 
+--COMANDO MYSQL--
+create database teste123;
+use teste123;
+
+select * from data;
+
+create table usuario(
+	id int primary key auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null unique,
+    senha varchar(200) not null
+);
+
+select * from usuario;
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+FLUSH PRIVILEGES;
+
 --RODAR SERVIDOR--
 node --watch .\server\

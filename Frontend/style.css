@@ -6,7 +6,6 @@
     --accent1: #38bdf8;
     --accent2: #a855f7;
     --accent3: #22d3ee;
-
 }
 
 * {
@@ -76,36 +75,9 @@ body {
     opacity: 1;
 }
 
-.main {
-    margin-left: 80px;
-    width: calc(100% - 80px);
-    transition: margin-left 0.3s ease;
-}
-
-.sidebar:hover~.main {
-    margin-left: 250px;
-    width: calc(100% - 250px);
-}
-
-.sidebar i {
-    font-size: 22px;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.sidebar i:hover {
-    color: var(--accent2);
-}
-
 #logout-theme {
     margin-top: auto;
     width: 100%;
-}
-
-
-#theme-toggle:hover {
-    background-color: #333;
 }
 
 .malweeIMG {
@@ -116,8 +88,15 @@ body {
 }
 
 .main {
-    flex: 1;
+    margin-left: 80px;
+    width: calc(100% - 80px);
     padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover~.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
 }
 
 .header h1 {
@@ -167,11 +146,10 @@ body {
     background: var(--card);
     padding: 35px;
     border-radius: 10px;
-    width: 100%;            
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: 1 / -1;
 }
 
 .img-malwee {
@@ -211,16 +189,9 @@ body {
     background: var(--card);
     padding: 40px;
     border-radius: 10px;
-    height: 350px; 
+    height: 350px;
     max-height: 350px;
     overflow: hidden;
-}
-
-
-.block:nth-child(3),
-.block:nth-child(4),
-.block:nth-child(5) {
-    grid-column: auto;
 }
 
 .block h3 {
@@ -236,7 +207,6 @@ body {
     --accent1: #0ea5e9;
     --accent2: #9333ea;
     --accent3: #06b6d4;
-    --search-bg: #eaeaea;
 }
 
 .theme-btn {
@@ -251,22 +221,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
     margin-top: 12px;
     margin-left: 20px;
 }
-    
+
 .theme-btn:hover {
     background: var(--accent1);
-    transform: scale(1.05);
-}
-
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
 }
 
 .search-bar-top {
@@ -282,11 +243,9 @@ body {
     padding: 0 15px;
     border-radius: 8px;
     border: none;
-    background-color: var(--search-bg);
+    background-color: #2a2a2a;
     color: var(--text);
     width: 250px;
-    box-sizing: border-box;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .search-bar-top input::placeholder {
@@ -304,14 +263,28 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.search-bar-top button:hover {
-    background-color: #cfcfcf;
 }
 
 .titulo-malwee {
-    flex: 1;           
+    flex: 1;
     text-align: center;
-  }
+}
+
+.light-theme .search-bar-top input {
+    background-color: #f1f5f9;
+    color: var(--text);
+    border: 1px solid #cbd5e1;
+}
+
+.light-theme .search-bar-top input::placeholder {
+    color: #94a3b8;
+}
+
+.light-theme .search-bar-top button {
+    background-color: var(--accent2);
+    color: white;
+}
+
+.light-theme .search-bar-top button:hover {
+    background-color: var(--accent1);
+}

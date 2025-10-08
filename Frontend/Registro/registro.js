@@ -6,9 +6,9 @@ document.getElementById('registroForm').addEventListener('submit', function(e){
     const senha = document.getElementById('senha').value;
     const mensagemElement = document.getElementById('mensagem-registro');
 
-    mensagemElement.textContent - '';
+    mensagemElement.textContent = '';
 
-    fetch('http://localhost:3000/registrar', {
+    fetch('http://localhost:3000/registro', {
     
         method: 'POST',
     

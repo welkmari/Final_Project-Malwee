@@ -11,12 +11,12 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Syne:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="icon" href="../img/image-removebg-preview.png" type="image/png">
 
-    <link rel="stylesheet" href="/Frontend/Dashboard/style.css">
+    <link rel="stylesheet" href="style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -31,7 +31,7 @@
         <a href="/Frontend/Relatorios/index.html"><i class="ri-bar-chart-line"></i><span
                 class="text">Relatórios</span></a>
         <a href="/Frontend/Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
-        <a href="configuracoes.html"><i class="ri-settings-3-line"></i><span class="text">Configurações</span></a>
+        <a href="/Frontend/CadastroDados/cadastroDados.html"><i class="ri-settings-3-line"></i><span class="text">Cadastro de Dados</span></a>
 
         <div id="logout-theme">
             <a href="/Frontend/Login/login.html"><span class="material-symbols-outlined">logout</span><span
@@ -62,190 +62,62 @@
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-header">
-                        <h3>Metros Produzidos</h3>
-                        <i class="ri-money-dollar-circle-line"></i>
+                        <h3>Eficiência da Máquina</h3>
+                        <i class="ri-line-chart-line"></i>
                     </div>
-                    <div class="metric-value"></div>
-                    <div class="metric-comparison positive"><span></span> Vs. ao mês anterior</div>
+                    <div class="metric-value">92,8%</div>
+                    <div class="metric-comparison positive"><span>+3.2%</span> Vs. ao mês anterior</div>
                 </div>
-
                 <div class="metric-card">
                     <div class="metric-header">
-                        <h3>Quantidade de Tiras</h3>
-                        <i class="ri-shopping-cart-line"></i>
+                        <h3>Atingimento de Metas</h3>
+                        <i class="ri-check-double-line"></i>
                     </div>
-                    <div class="metric-value"></div>
-                    <div class="metric-comparison positive"><span></span> Vs. ao mês anterior</div>
+                    <div class="metric-value">85%</div>
+                    <div class="metric-comparison positive"><span>+5%</span> Vs. ao mês anterior</div>
                 </div>
-
                 <div class="metric-card">
                     <div class="metric-header">
-                        <h3>Tipo de Tecido</h3>
-                        <i class="ri-price-tag-3-line"></i>
+                        <h3>Produção Total</h3>
+                        <i class="ri-ruler-2-line"></i>
                     </div>
-                    <div class="metric-value"></div>
-                    <div class="metric-comparison negative"></div>
+                    <div class="metric-value">12.450 m</div>
+                    <div class="metric-comparison positive"><span>+1.200 m</span> Vs. ao mês anterior</div>
                 </div>
-
                 <div class="metric-card">
                     <div class="metric-header">
-                        <h3>Sobras de Rolo</h3>
-                        <i class="ri-trending-up-line"></i>
+                        <h3>Paradas (Setup)</h3>
+                        <i class="ri-time-line"></i>
                     </div>
-                    <div class="metric-value"></div>
-                    <div class="metric-comparison positive"><span></span> Vs. ao mês anterior</div>
+                    <div class="metric-value">1,5 h</div>
+                    <div class="metric-comparison negative"><span>-15 min</span> Vs. ao mês anterior</div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div class="filter-tabs">
-                        <button class="tab-btn">Metros Produzidos</button>
-                        <button class="tab-btn">Quantidade de Tiras</button>
-                        <button class="tab-btn">Tipo de Tecidos</button>
-                        <button class="tab-btn">Sobras de Rolo</button>
-                        <button class="tab-btn">Tipo de Saída</button>
-                        <button class="tab-btn">Número da Tarefa</button>
-                        <button class="tab-btn">Tempo de Setup</button>
-                        <button class="tab-btn">Tarefa completa</button>
+                        <button class="tab-btn" id="graficoEficiencia">Eficiência da Máquina</button>
+                        <button class="tab-btn" id="graficoAtingimentoMeta">Atingimento de Meta</button>
+                        <button class="tab-btn" id="graficoProducaoTempo">Produção / Tempo</button>
+                        <button class="tab-btn" id="graficoProducaoTecido">Produção / Tecido</button>
+                        <button class="tab-btn" id="graficoLocalidades">Produção / Localidade</button>
+                        <button class="tab-btn" id="graficoSobrasDeRolo">Sobras de Rolo</button>
+                        <button class="tab-btn" id="graficoTempoSetup">Tempo de Setup</button>
+                        <button class="tab-btn" id="graficoQuantidadeTiras">Quantidade de Tiras</button>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <div class="dashboard-content">
-                        <div class="chart-section">
-                            <div class="chart-header">
-                                <h4>Visão Geral da Produção</h4>
-                                <div class="chart-legend">
-                                    <span class="legend-item">
-                                        <div class="legend-color faturamento"></div>
-                                        Produção
-                                    </span>
-                                    <span class="legend-item">
-                                        <div class="legend-color qtd-vendas"></div>
-                                        Quantidade
-                                    </span>
-                                </div>
-                            </div>
-
-                            <canvas id="lineChart" width="400" height="200"></canvas>
-                            <canvas id="barChart" width="400" height="200"></canvas>
-                        </div>
-
-                        <div class="side-metrics">
-                            <div class="product-tickets">
-                                <div class="ticket-item"><span>Metros Produzidos</span><span
-                                        class="ticket-value"></span></div>
-                                <div class="ticket-item"><span>Quantidade de Tiras</span><span
-                                        class="ticket-value"></span></div>
-                                <div class="ticket-item"><span>Tipos de Tecido</span><span class="ticket-value"></span>
-                                </div>
-                                <div class="ticket-item"><span>Sobras de Rolo</span><span class="ticket-value"></span>
-                                </div>
-                                <div class="ticket-item"><span>Tipo de Saída</span><span class="ticket-value"></span>
-                                </div>
-                                <div class="ticket-item"><span>Número da Tarefa</span><span class="ticket-value"></span>
-                                </div>
-                                <div class="ticket-item"><span>Tempo de Setup</span><span class="ticket-value"></span>
-                                </div>
-                                <div class="ticket-item"><span>Tarefa Completa</span><span class="ticket-value"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sales-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Gerente</th>
-                                    <th>Faturamento</th>
-                                    <th>Qtd Vendas</th>
-                                    <th>Ticket Médio</th>
-                                    <th>Positivação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Gabriel Azevedo</td>
-                                    <td>R$5.497.085</td>
-                                    <td>18.950</td>
-                                    <td>R$350,08</td>
-                                    <td>577</td>
-                                </tr>
-                                <tr>
-                                    <td>Diego Carvalho</td>
-                                    <td>R$3.204.818</td>
-                                    <td>10.371</td>
-                                    <td>R$311,67</td>
-                                    <td>565</td>
-                                </tr>
-                                <tr>
-                                    <td>Eliseiro Souza</td>
-                                    <td>R$275.557</td>
-                                    <td>1.712</td>
-                                    <td>R$847,60</td>
-                                    <td>200</td>
-                                </tr>
-                                <tr>
-                                    <td>Guianeta Correia</td>
-                                    <td>R$312.451</td>
-                                    <td>8.715</td>
-                                    <td>R$308,87</td>
-                                    <td>440</td>
-                                </tr>
-                                <tr>
-                                    <td>Julio Lima</td>
-                                    <td>R$770.679</td>
-                                    <td>5.484</td>
-                                    <td>R$326,29</td>
-                                    <td>555</td>
-                                </tr>
-                                <tr>
-                                    <td>Sofia Ribeiro</td>
-                                    <td>R$2.192.197</td>
-                                    <td>8.579</td>
-                                    <td>R$255,53</td>
-                                    <td>449</td>
-                                </tr>
-                                <tr>
-                                    <td>Felice Goncalves</td>
-                                    <td>R$995.370</td>
-                                    <td>3.504</td>
-                                    <td>R$284,03</td>
-                                    <td>376</td>
-                                </tr>
-                                <tr class="total-row">
-                                    <td><strong>Total</strong></td>
-                                    <td><strong>R$10.214.809</strong></td>
-                                    <td><strong>32.065</strong></td>
-                                    <td><strong>R$318,57</strong></td>
-                                    <td><strong>667</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="production-section">
-                        <h4>Resumo de Produção</h4>
-                        <div class="summary-grid">
-                            <div class="summary-item"><span class="item-name">Metros Produzidos</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Quantidade de Tiras</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Tipos de tecidos</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Sobras de rolo</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Tipo de Saída</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Número da Tarefa</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Tempo de Setup</span><span
-                                    class="summary-value">72</span></div>
-                            <div class="summary-item"><span class="item-name">Tarefa Completa</span><span
-                                    class="summary-value">72</span></div>
-                        </div>
+                    <div id="charts-container">
+                        <canvas id="graficoEficiencia"></canvas>
+                        <canvas id="graficoAtingimentoMeta"></canvas>
+                        <canvas id="graficoProducaoTempo"></canvas>
+                        <canvas id="graficoProducaoTecido"></canvas>
+                        <canvas id="graficoLocalidades"></canvas>
+                        <canvas id="graficoSobrasDeRolo"></canvas>
+                        <canvas id="graficoTempoSetup"></canvas>
+                        <canvas id="graficoQuantidadeTiras"></canvas>
                     </div>
                 </div>
             </div>
@@ -254,11 +126,10 @@
         <footer class="footer">
             <span>© 2025 - Grupo Malwee Ltda - Todos os Direitos Reservados</span>
         </footer>
-        </main>
+    </div>
 
-        <script src="/Frontend/JS/tema.js"></script>
-        <script src="/Frontend/JS/chart.js"></script>
-        <script src="/Frontend/JS/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 
 </html>

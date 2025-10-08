@@ -32,9 +32,9 @@ const pool = mysql.createPool({
 
 app.get('/', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM data LIMIT 5'); 
+        const [rows] = await pool.query('SELECT * FROM data LIMIT 5');
 
-        res.status(200).json({ 
+        res.status(200).json({
             message: 'Conexão com Node.js e DB OK!',
             total_records: rows.length,
             data: rows,
@@ -48,6 +48,8 @@ app.get('/', async (req, res) => {
         });
     }
 });
+
+
 
 //Gráfico 'Eficiência da máquina (%)'
 
@@ -68,7 +70,7 @@ app.get('/api/chart-data', async (req, res) => {
         const [results] = await pool.query(sqlQuery);
 
         const labels = results.map(row => `Máquina ${row.Maquina}`);
-        const data = results.map(row => parseFloat(row.media_metros).toFixed(2)); 
+        const data = results.map(row => parseFloat(row.media_metros).toFixed(2));
 
         res.json({ labels, data });
 
@@ -97,40 +99,40 @@ app.get('/api/chart-meta', async (req, res) => {
             ORDER BY \`Tarefa completa?\`;
         `;
         const [results] = await pool.query(query);
-        
+
         console.log('Resultados brutos:', results);
-        
+
         const labelMap = {
             '0': 'Incompleta',
             '1': 'Completa',
             'TRUE': 'Completa',
             'FALSE': 'Incompleta'
         };
-        
+
         const labels = [];
         const data = [];
-        
+
         results.forEach(item => {
             const valor = item.valor_original?.toString();
             const label = labelMap[valor] || 'Indefinida';
             labels.push(label);
             data.push(item.total);
         });
-        
+
         console.log('Labels finais:', labels);
         console.log('Data final:', data);
-        
+
         res.json({ labels, data });
-        
+
     } catch (erro) {
         console.error('ERRO ao buscar dados para o gráfico de metas:', erro.message);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Erro ao buscar dados do gráfico de metas.'
         });
     }
 });
 
-    
+
 //Gráfico 'Gasto de material (real x previsto)'
 app.get('/api/chart-producao-tecido', async (req, res) => {
     try {
@@ -204,6 +206,99 @@ app.get('/api/chart-localidades', async (req, res) => {
         res.status(500).json({ error: 'Erro ao buscar dados de produção por localidade.', details: erro.code });
     }
 });
+
+// CÓDIGO ADICIONADO ABAIXO
+
+// Gráfico 'Sobras de Rolo'
+app.get('/api/chart-sobras', async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                \`Sobra de Rolo?\` as valor_original,
+                COUNT(*) as total 
+            FROM data 
+            GROUP BY \`Sobra de Rolo?\`
+            ORDER BY \`Sobra de Rolo?\`;
+        `;
+        const [results] = await pool.query(query);
+        
+        const labelMap = {
+            'TRUE': 'Com Sobra',
+            'FALSE': 'Sem Sobra',
+            '1': 'Com Sobra',
+            '0': 'Sem Sobra'
+        };
+        
+        const labels = results.map(item => labelMap[item.valor_original?.toString()] || 'Indefinido');
+        const data = results.map(item => item.total);
+        
+        res.json({ labels, data });
+        
+    } catch (erro) {
+        console.error('ERRO ao buscar dados para o gráfico de sobras de rolo:', erro.message);
+        res.status(500).json({ 
+            error: 'Erro ao buscar dados do gráfico de sobras de rolo.',
+            details: erro.code
+        });
+    }
+});
+
+// Gráfico 'Tempo Médio de Setup por Máquina'
+app.get('/api/chart-setup', async (req, res) => {
+    try {
+        const sqlQuery = `
+            SELECT 
+                Maquina, 
+                AVG(\`Tempo de Setup\`) AS media_setup
+            FROM 
+                data
+            GROUP BY 
+                Maquina
+            ORDER BY 
+                Maquina;
+        `;
+
+        const [results] = await pool.query(sqlQuery);
+
+        const labels = results.map(row => `Máquina ${row.Maquina}`);
+        const data = results.map(row => parseFloat(row.media_setup).toFixed(2)); 
+
+        res.json({ labels, data });
+
+    } catch (erro) {
+        console.error('ERRO ao buscar dados para o gráfico de setup:', erro.message);
+        res.status(500).json({
+            error: 'Erro ao buscar dados do gráfico de setup.',
+            details: erro.code
+        });
+    }
+});
+
+// Gráfico 'Distribuição da Quantidade de Tiras'
+app.get('/api/chart-tiras', async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                \`Quantidade de Tiras\`, 
+                COUNT(*) as total_ocorrencias
+            FROM data 
+            GROUP BY \`Quantidade de Tiras\`
+            ORDER BY \`Quantidade de Tiras\`;
+        `;
+        const [results] = await pool.query(query);
+
+        const labels = results.map(item => `${item['Quantidade de Tiras']} Tira(s)`);
+        const data = results.map(item => item.total_ocorrencias);
+
+        res.json({ labels, data });
+
+    } catch (erro) {
+        console.error('ERRO ao buscar dados de quantidade de tiras:', erro.message);
+        res.status(500).json({ error: 'Erro ao buscar dados de quantidade de tiras.', details: erro.code });
+    }
+});
+
+// FIM DO CÓDIGO ADICIONADO
 
 app.post('/registro', (req, res) =>{
     const {nome, email, senha} = req.body;
@@ -282,4 +377,3 @@ app.post('/login', (req, res) => {
 app.listen(APP_PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://localhost:${APP_PORT}`)
 })
-

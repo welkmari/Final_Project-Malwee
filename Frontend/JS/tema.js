@@ -32,8 +32,8 @@ themeToggle.addEventListener('click', () => {
 function updateThemeIcon(theme) {
     const icon = themeToggle.querySelector('i');
     if (theme === 'light') {
-        icon.className = 'ri-moon-line';
-    } else {
         icon.className = 'ri-sun-line';
+    } else {
+        icon.className = 'ri-moon-line';
     }
 } 

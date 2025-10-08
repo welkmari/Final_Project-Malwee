@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados de Produção - Costura</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=logout" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Frontend/CadastroDados/cadastroDados.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <img class="malweeIMG" src="/Frontend/img/image-removebg-preview.png" alt="Icone Malwee">
+    
+        <a href="/Frontend/index.html"><i class="ri-home-4-line"></i><span class="text">Home</span></a>
+        <a href="/Frontend/Dashboard/"><i class="ri-dashboard-line"></i><span class="text">Dashboard</span></a>
+        <a href="/Frontend/Producoes/producao.html"><i class="ri-box-3-line"></i><span class="text">Produção</span></a>
+        <a href="/Frontend/Relatorios/index.html"><i class="ri-bar-chart-line"></i><span class="text">Relatórios</span></a>
+        <a href="/Frontend/Login/login.html"><i class="ri-user-line"></i><span class="text">Usuário</span></a>
+        <a href="/Frontend/CadastroDados/cadastroDados.html"><i class="ri-settings-3-line"></i><span class="text">Cadastro de Dados</span></a>
+    
+        <div id="logout-theme">
+            <a href="/Frontend/Login/login.html"><span class="material-symbols-outlined">logout</span><span
+                    class="text">Sair</span></a>
+            <button id="theme-toggle" class="theme-btn">
+                <i class="ri-sun-line"></i>
+            </button>
+        </div>
+      </div>
+
+    <div class="main">
+        <div class="header">
+            <div class="title-container">
+                <div>
+                    <h1>Grupo Malwee</h1>
+                    <p>Visualização dos Dados de Produção - Costura</p>
+                </div>
+                <div class="search-bar-top">
+                    <input type="text" id="search-input" placeholder="Pesquisar...">
+                    <button id="search-button"><i class="ri-search-line"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário para adicionar dados -->
+        <div class="data-container">
+            <div class="data-header">
+                <h2>Adicionar Registro de Produção</h2>
+            </div>
+            
+            <form id="production-form" class="production-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-data">Data/Hora</label>
+                        <input type="datetime-local" id="input-data" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-maquina">Máquina</label>
+                        <input type="text" id="input-maquina" placeholder="Ex: CD1">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-tipo-tecido">Tipo Tecido</label>
+                        <select id="input-tipo-tecido">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-tipo-saida">Tipo Saída</label>
+                        <select id="input-tipo-saida">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-numero-tarefa">Nº Tarefa</label>
+                        <input type="number" id="input-numero-tarefa" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-tempo-setup">Tempo Setup (min)</label>
+                        <input type="number" id="input-tempo-setup" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-tempo-producao">Tempo Produção (min)</label>
+                        <input type="number" id="input-tempo-producao" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-quantidade-tiras">Qtd Tiras</label>
+                        <input type="number" id="input-quantidade-tiras" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-metros">Metros Produzidos</label>
+                        <input type="number" id="input-metros" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="input-tarefa-completa" checked>
+                        <label for="input-tarefa-completa">Tarefa Completa</label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="input-sobra-rolo">
+                        <label for="input-sobra-rolo">Sobra de Rolo</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-observacoes">Observações</label>
+                        <input type="text" id="input-observacoes" placeholder="Observações opcionais">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Limpar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar Registro</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Visualização de dados -->
+        <div class="data-container">
+            <div class="data-header">
+                <h2>Dados de Produção</h2>
+                <div class="file-info">
+                    <span id="total-registros">0 registros</span>
+                    <button class="btn btn-secondary btn-sm" onclick="exportarDados()">Exportar CSV</button>
+                </div>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filter-date">Data</label>
+                    <input type="date" id="filter-date">
+                </div>
+                <div class="filter-group">
+                    <label for="filter-machine">Máquina</label>
+                    <select id="filter-machine">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-fabric">Tipo de Tecido</label>
+                    <select id="filter-fabric">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-task">Tarefa Completa</label>
+                    <select id="filter-task">
+                        <option value="">Todas</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-roll">Sobra de Rolo</label>
+                    <select id="filter-roll">
+                        <option value="">Todas</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-records">0</div>
+                    <div class="stat-label">Total de Registros</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="total-meters">0</div>
+                    <div class="stat-label">Metros Produzidos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-production-time">0</div>
+                    <div class="stat-label">Tempo Médio de Produção (min)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-setup-time">0</div>
+                    <div class="stat-label">Tempo Médio de Setup (min)</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Máquina</th>
+                            <th>Tipo Tecido</th>
+                            <th>Tipo Saída</th>
+                            <th>Nº Tarefa</th>
+                            <th>Tempo Setup</th>
+                            <th>Tempo Produção</th>
+                            <th>Qtd Tiras</th>
+                            <th>Metros</th>
+                            <th>Tarefa Completa</th>
+                            <th>Sobra Rolo</th>
+                            <th>Observações</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dados serão inseridos aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <!-- Paginação será gerada via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/Frontend/CadastroDados/cadastroDados.js"></script>
+    <script src="/JS/tema.js"></script>
+</body>
+</html>
