@@ -57,7 +57,13 @@
         </div>
 
         <div class="content-wrapper">
-            <h1>VISÃO GERAL DE PRODUÇÃO</h1>
+            <div class="header-controls">
+                <h1>VISÃO GERAL DE PRODUÇÃO</h1>
+                <div class="filtro-container">
+                    <label for="filtro-mes">Filtrar por Mês:</label>
+                    <input type="month" id="filtro-mes">
+                </div>
+            </div>
 
             <div class="metrics-grid">
                 <div class="metric-card">
@@ -97,14 +103,14 @@
             <div class="card">
                 <div class="card-header">
                     <div class="filter-tabs">
-                        <button class="tab-btn" id="graficoEficiencia">Eficiência da Máquina</button>
-                        <button class="tab-btn" id="graficoAtingimentoMeta">Atingimento de Meta</button>
-                        <button class="tab-btn" id="graficoProducaoTempo">Produção / Tempo</button>
-                        <button class="tab-btn" id="graficoProducaoTecido">Produção / Tecido</button>
-                        <button class="tab-btn" id="graficoLocalidades">Produção / Localidade</button>
-                        <button class="tab-btn" id="graficoSobrasDeRolo">Sobras de Rolo</button>
-                        <button class="tab-btn" id="graficoTempoSetup">Tempo de Setup</button>
-                        <button class="tab-btn" id="graficoQuantidadeTiras">Quantidade de Tiras</button>
+                        <button class="tab-btn" data-chart-id="graficoEficiencia">Eficiência da Máquina</button>
+                        <button class="tab-btn" data-chart-id="graficoAtingimentoMeta">Atingimento de Meta</button>
+                        <button class="tab-btn" data-chart-id="graficoProducaoTempo">Produção / Tempo</button>
+                        <button class="tab-btn" data-chart-id="graficoProducaoTecido">Produção / Tecido</button>
+                        <button class="tab-btn" data-chart-id="graficoLocalidades">Produção / Localidade</button>
+                        <button class="tab-btn" data-chart-id="graficoSobrasDeRolo">Sobras de Rolo</button>
+                        <button class="tab-btn" data-chart-id="graficoTempoSetup">Tempo de Setup</button>
+                        <button class="tab-btn" data-chart-id="graficoQuantidadeTiras">Quantidade de Tiras</button>
                     </div>
                 </div>
 

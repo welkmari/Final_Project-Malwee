@@ -22,6 +22,7 @@ fetch('http://localhost:3000/api/chart-data')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         position: 'top'
@@ -83,6 +84,7 @@ fetch('http://localhost:3000/api/chart-meta')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         position: 'top'
@@ -166,6 +168,7 @@ fetch('http://localhost:3000/api/chart-producao-tecido')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     title: {
                         display: true,
@@ -215,6 +218,7 @@ fetch('http://localhost:3000/api/chart-localidades')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         position: 'top',
@@ -260,6 +264,7 @@ fetch('http://localhost:3000/api/chart-sobras')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: { position: 'top' },
                     title: { display: true, text: 'Proporção de Sobras de Rolo' }
@@ -291,6 +296,7 @@ fetch('http://localhost:3000/api/chart-setup')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     title: { display: true, text: 'Tempo Médio de Setup por Máquina' }
                 },
@@ -327,6 +333,7 @@ fetch('http://localhost:3000/api/chart-tiras')
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     title: { display: true, text: 'Distribuição da Quantidade de Tiras por Tarefa' }
                 },

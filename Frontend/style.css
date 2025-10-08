@@ -1,24 +1,29 @@
 :root {
-    --bg-dark: #1e1e1e;
-    --sidebar: #151515;
-    --card: #222222;
-    --text: #f1f1f1;
+    --bg-dark: #161717;
+    --sidebar: #1a1a1a;
+    --card: #242424;
+    --text: #e0e0e0;
     --accent1: #38bdf8;
     --accent2: #a855f7;
     --accent3: #22d3ee;
+    --surface: #2d2d2d;
+    --border: #404040;
 }
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* GERAL */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--bg-dark);
     color: var(--text);
     display: flex;
+    line-height: 1.6;
 }
 
 .sidebar {
@@ -30,12 +35,14 @@ body {
     background: var(--sidebar);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 20px 0;
-    gap: 20px;
+    gap: 15px;
     transition: width 0.3s ease;
     overflow: hidden;
     z-index: 1000;
+    border-right: 1px solid var(--border);
+    justify-content: center;
+    align-items: center;
 }
 
 .sidebar:hover {
@@ -46,29 +53,33 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 15px;
-    color: #aaa;
+    padding: 12px 20px;
+    color: #b0b0b0;
     text-decoration: none;
     white-space: nowrap;
     width: 100%;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0 10px;
 }
 
 .sidebar a:hover {
     color: var(--accent2);
+    background: var(--surface);
+    transform: translateX(5px);
 }
 
 .sidebar i,
 .sidebar .material-symbols-outlined {
     font-size: 22px;
     min-width: 50px;
-    text-align: center;
+    justify-content: center;
 }
 
 .sidebar span.text {
     font-size: 15px;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity 0.3s ease;
 }
 
 .sidebar:hover span.text {
@@ -78,6 +89,34 @@ body {
 #logout-theme {
     margin-top: auto;
     width: 100%;
+}
+
+#theme-toggle{
+    margin-top: auto;
+}
+
+#theme-toggle:hover {
+    background-color: #333;
+}
+
+.malweeIMG {
+    height: 50px;
+    width: 50px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.main {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover~.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
 }
 
 .malweeIMG {
@@ -125,17 +164,19 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
+    margin-left: 20px;
 }
 
 .card-top {
     background: var(--card);
-    padding: 25px;
+    padding: 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     transition: transform 0.2s;
+    margin-left: 1vh;
 }
 
 .card-top:hover {
@@ -222,8 +263,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: background 0.3s;
-    margin-top: 12px;
-    margin-left: 20px;
+    margin: auto;
 }
 
 .theme-btn:hover {

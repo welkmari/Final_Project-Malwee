@@ -1,69 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona todos os botões e o container dos gráficos
     const buttons = document.querySelectorAll('.tab-btn');
     const chartsContainer = document.getElementById('charts-container');
     const allCanvases = chartsContainer.querySelectorAll('canvas');
+    const filtroMesInput = document.getElementById('filtro-mes');
 
-    // Objeto para guardar os gráficos já criados e evitar recarregá-los
     const chartInstances = {};
 
-    /**
-     * Função principal para mostrar um gráfico e esconder os outros.
-     * @param {string} chartId - O ID do canvas do gráfico a ser mostrado (ex: 'graficoEficiencia').
-     */
+    // --- LÓGICA DO FILTRO ---
+    
+    // Define o valor inicial do filtro para o mês e ano atuais
+    const setDefaultDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        // getMonth() é baseado em zero (0-11), então adicionamos 1
+        const month = (today.getMonth() + 1).toString().padStart(2, '0');
+        filtroMesInput.value = `${year}-${month}`;
+    };
+
+    // Função para recarregar todos os gráficos com o novo filtro
+    const reloadCharts = () => {
+        // Primeiro, destrói todas as instâncias de gráficos existentes
+        for (const chartId in chartInstances) {
+            if (chartInstances[chartId]) {
+                chartInstances[chartId].destroy();
+                delete chartInstances[chartId];
+            }
+        }
+
+        // Pega o ID do gráfico que está ativo no momento
+        const activeButton = document.querySelector('.tab-btn.active');
+        const activeChartId = activeButton ? activeButton.dataset.chartId : buttons[0].dataset.chartId;
+
+        // Mostra o gráfico ativo novamente, o que forçará uma nova busca de dados com o filtro
+        if (activeChartId) {
+            showChart(activeChartId);
+        }
+    };
+
+    // Adiciona o "escutador" de eventos ao filtro
+    filtroMesInput.addEventListener('change', reloadCharts);
+
+    // --- LÓGICA DOS GRÁFICOS ---
+
     function showChart(chartId) {
-        // 1. Esconde todos os gráficos
-        allCanvases.forEach(canvas => {
-            canvas.style.display = 'none';
-        });
+        allCanvases.forEach(canvas => canvas.style.display = 'none');
+        buttons.forEach(btn => btn.classList.remove('active'));
 
-        // 2. Remove o estilo de "ativo" de todos os botões
-        buttons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-
-        // 3. Mostra o gráfico correto
         const targetCanvas = document.getElementById(chartId);
-        if (targetCanvas) {
-            targetCanvas.style.display = 'block';
-        }
+        if (targetCanvas) targetCanvas.style.display = 'block';
 
-        // 4. Adiciona o estilo de "ativo" ao botão clicado
-        const activeButton = document.getElementById(chartId); // O ID do botão é o mesmo do canvas
-        if (activeButton) {
-            activeButton.classList.add('active');
-        }
+        const activeButton = document.querySelector(`button[data-chart-id="${chartId}"]`);
+        if (activeButton) activeButton.classList.add('active');
 
-        // 5. Se o gráfico já foi criado, não faz mais nada
         if (chartInstances[chartId]) {
-            return;
+            return; // Se já existe, não faz nada
         }
 
-        // 6. Se for a primeira vez, busca os dados e cria o gráfico
         createChart(chartId);
     }
 
-    /**
-     * Busca os dados no servidor e cria o gráfico.
-     * @param {string} chartId - O ID do gráfico a ser criado.
-     */
     function createChart(chartId) {
         const chartConfig = chartConfigurations[chartId];
-        if (!chartConfig) {
-            console.error(`Configuração não encontrada para o gráfico: ${chartId}`);
-            return;
-        }
+        if (!chartConfig) return;
 
-        fetch(chartConfig.apiUrl)
+        // Pega o valor do filtro no momento da criação do gráfico
+        const [ano, mes] = filtroMesInput.value.split('-');
+        
+        // Constrói a URL da API com os parâmetros de filtro
+        const apiUrlWithFilter = `${chartConfig.apiUrl}?ano=${ano}&mes=${mes}`;
+
+        fetch(apiUrlWithFilter)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Erro HTTP! Status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
                 return response.json();
             })
             .then(json => {
                 const ctx = document.getElementById(chartId).getContext('2d');
-                // Cria e guarda a instância do gráfico
                 chartInstances[chartId] = new Chart(ctx, {
                     type: chartConfig.type,
                     data: chartConfig.data(json),
@@ -72,28 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error(`Erro ao buscar dados para o gráfico (${chartId}):`, error);
-                // Mostra uma mensagem de erro no lugar do gráfico
                 const canvas = document.getElementById(chartId);
                 if (canvas) {
-                    canvas.style.display = 'none';
-                    const errorDiv = document.createElement('div');
-                    errorDiv.textContent = 'Erro ao carregar o gráfico. Verifique o servidor e a conexão.';
-                    errorDiv.style.color = 'red';
-                    canvas.parentNode.insertBefore(errorDiv, canvas);
+                    const errorDiv = canvas.parentElement.querySelector('.error-message');
+                    if (!errorDiv) {
+                        const newErrorDiv = document.createElement('div');
+                        newErrorDiv.className = 'error-message';
+                        newErrorDiv.textContent = 'Não há dados para exibir no período selecionado.';
+                        newErrorDiv.style.color = 'orange';
+                        canvas.parentElement.insertBefore(newErrorDiv, canvas);
+                    }
                 }
             });
     }
+    
+    // --- INICIALIZAÇÃO ---
 
-    // Adiciona o evento de clique para cada botão
+    setDefaultDate(); // Define a data padrão
+    
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            showChart(button.id);
+            const chartId = button.dataset.chartId;
+            showChart(chartId);
         });
     });
 
-    // Exibe o primeiro gráfico como padrão ao carregar a página
     if (buttons.length > 0) {
-        showChart(buttons[0].id);
+        showChart(buttons[0].dataset.chartId);
     }
 });
 

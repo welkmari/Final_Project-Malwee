@@ -1,20 +1,29 @@
+:root {
+    --bg-dark: #121212;
+    --sidebar: #1a1a1a;
+    --card: #242424;
+    --text: #e0e0e0;
+    --accent1: #38bdf8;
+    --accent2: #a855f7;
+    --accent3: #22d3ee;
+    --surface: #2d2d2d;
+    --border: #404040;
+}
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* GERAL */
 body {
-    background-image: url('../img/Malwee.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    position: relative;
+    line-height: 1.6;
 }
 
 body::before {
