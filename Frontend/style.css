@@ -117,13 +117,6 @@ body {
     width: calc(100% - 250px);
 }
 
-.malweeIMG {
-    height: 50px;
-    width: 50px;
-    margin-left: 15px;
-    margin-bottom: 10px;
-}
-
 .main {
     margin-left: 80px;
     width: calc(100% - 80px);
