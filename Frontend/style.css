@@ -326,3 +326,16 @@ body {
 .light-theme .search-bar-top button:hover {
     background-color: var(--accent1);
 }
+
+.footer {
+    margin-top: 15px;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    color: #aaa;
+    border-radius: 15px;
+  }
+  

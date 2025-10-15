@@ -407,12 +407,13 @@ tbody tr:hover {
     border-top: 1px solid var(--border);
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 12px;
     color: #aaa;
     z-index: 999;
     transition: left 0.3s ease, width 0.3s ease;
 }
+
 
 .sidebar:hover ~ .main .footer {
     left: 250px;
